@@ -1,11 +1,18 @@
 import "../App.scss";
-import Header from "./Header";
+import Homepage from "./Homepage";
 import SignIn from "./SignIn";
+import { Routes, Route } from "react-router-dom";
+import { AuthContextProvider } from "../contexts/AuthContext";
 
 function App() {
   return (
     <div className="App">
-      <SignIn />
+      <AuthContextProvider>
+        <Routes>
+          <Route path="/" element={<SignIn />}></Route>
+          <Route path="/home" element={<Homepage />}></Route>
+        </Routes>
+      </AuthContextProvider>
     </div>
   );
 }
