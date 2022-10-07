@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
@@ -9,15 +9,31 @@ import { auth } from "../firebase";
 const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  console.log("aut context");
+  const [user, setUser] = useState({});
+
+  // function to sign users out of the account
+  const logoutUser = () => {
+    return signOut(auth);
+  };
+
+  // function to sign users in the account
   const loginUser = (email, password) => {
-    console.log(email, password);
-    console.log("hello");
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  // this will only run if the auth state changes (user signs in, signs out)
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   return (
-    <UserContext.Provider value={{ loginUser }}>
+    <UserContext.Provider value={{ loginUser, logoutUser, user }}>
       {children}
     </UserContext.Provider>
   );

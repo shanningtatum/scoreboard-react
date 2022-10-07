@@ -11,7 +11,6 @@ const SignIn = () => {
   const { loginUser } = UserAuth();
 
   const handleSubmit = async (e) => {
-    console.log("submit");
     e.preventDefault();
     setError("");
     try {
