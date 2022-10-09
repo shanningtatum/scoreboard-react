@@ -8,20 +8,30 @@ const SignIn = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const { loginUser } = UserAuth();
+  const { loginUser, anonUser } = UserAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
       await loginUser(loginEmail, loginPassword);
-      navigate("/home");
+      navigate("/");
     } catch (e) {
       if (e.message == "Firebase: Error (auth/user-not-found).") {
         setError("Invalid Login");
       } else if ((e.message = "Firebase: Error (auth/wrong-password).")) {
         setError("Invalid Password");
       }
+    }
+  };
+  const handleAnon = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await anonUser();
+      navigate("/");
+    } catch (e) {
+      setError(e.message);
     }
   };
 
@@ -58,6 +68,8 @@ const SignIn = () => {
           <div className="login-message">{error}</div>
           <div className="account-exists">
             Please contact Shannon to create an account 🙂
+            <p>Check out the app anonymously</p>
+            <button onClick={handleAnon}>Guest Login</button>
           </div>
         </div>
       </div>

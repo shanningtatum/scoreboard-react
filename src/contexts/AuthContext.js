@@ -3,6 +3,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  signInAnonymously,
 } from "firebase/auth";
 import { auth } from "../firebase";
 
@@ -10,6 +11,11 @@ const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
+
+  // function to sign in anonymously
+  const anonUser = () => {
+    return signInAnonymously(auth);
+  };
 
   // function to sign users out of the account
   const logoutUser = () => {
@@ -24,6 +30,7 @@ export const AuthContextProvider = ({ children }) => {
   // this will only run if the auth state changes (user signs in, signs out)
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log(currentUser);
       setUser(currentUser);
     });
 
@@ -33,7 +40,7 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loginUser, logoutUser, user }}>
+    <UserContext.Provider value={{ loginUser, logoutUser, user, anonUser }}>
       {children}
     </UserContext.Provider>
   );

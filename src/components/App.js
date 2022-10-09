@@ -1,26 +1,41 @@
 import "../App.scss";
 import Homepage from "./Homepage";
-import SignIn from "./SignIn";
-import { Routes, Route } from "react-router-dom";
-import { AuthContextProvider } from "../contexts/AuthContext";
+import SignIn from "../pages/SignIn";
+import { Routes, Route, Outlet } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
+import Error from "./Error";
+import MainContainer from "./MainContainer";
+import Scoreboard from "../pages/Scoreboard";
+import AddStats from "../pages/AddStats";
+import RecentStats from "../pages/RecentStats";
+import EditStats from "../pages/EditStats";
+import { UserAuth } from "../contexts/AuthContext";
 
 function App() {
+  const { user } = UserAuth();
   return (
     <div className="App">
-      <AuthContextProvider>
+      {!user ? (
+        <SignIn />
+      ) : (
         <Routes>
-          <Route path="/" element={<SignIn />}></Route>
+          {/* <Route path="*" element={<Error />} /> */}
+          <Route path="/signup" element={<SignIn />} />
           <Route
-            path="/home"
+            path="/"
             element={
               <ProtectedRoute>
                 <Homepage />
               </ProtectedRoute>
             }
-          ></Route>
+          >
+            <Route path="/scoreboard" element={<Scoreboard />} />
+            <Route path="/add" element={<AddStats />} />
+            <Route path="/recent" element={<RecentStats />} />
+            <Route path="/edit" element={<EditStats />} />
+          </Route>
         </Routes>
-      </AuthContextProvider>
+      )}
     </div>
   );
 }

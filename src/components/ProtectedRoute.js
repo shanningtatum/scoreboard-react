@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
 
   // checks to see if user is checked in, if not, navigate to main page.
   if (!user) {
-    return <Navigate to="/" />;
+    return <Navigate to="/signup" />;
   }
 
   return children;
