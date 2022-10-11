@@ -9,32 +9,35 @@ import AddStats from "../pages/AddStats";
 import RecentStats from "../pages/RecentStats";
 import EditStats from "../pages/EditStats";
 import { UserAuth } from "../contexts/AuthContext";
+import { DarkModeProvider } from "../contexts/DarkModeContext";
 
 function App() {
   const { user } = UserAuth();
   return (
     <div className="App">
-      {!user ? (
-        <SignIn />
-      ) : (
-        <Routes>
-          <Route path="*" element={<Error />} />
-          <Route path="/signup" element={<SignIn />} />
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Homepage />
-              </ProtectedRoute>
-            }
-          >
-            <Route path="/scoreboard" element={<Scoreboard />} />
-            <Route path="/add" element={<AddStats />} />
-            <Route path="/recent" element={<RecentStats />} />
-            <Route path="/edit" element={<EditStats />} />
-          </Route>
-        </Routes>
-      )}
+      <DarkModeProvider>
+        {!user ? (
+          <SignIn />
+        ) : (
+          <Routes>
+            <Route path="*" element={<Error />} />
+            <Route path="/signup" element={<SignIn />} />
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Homepage />
+                </ProtectedRoute>
+              }
+            >
+              <Route path="/scoreboard" element={<Scoreboard />} />
+              <Route path="/add" element={<AddStats />} />
+              <Route path="/recent" element={<RecentStats />} />
+              <Route path="/edit" element={<EditStats />} />
+            </Route>
+          </Routes>
+        )}
+      </DarkModeProvider>
     </div>
   );
 }

@@ -36,12 +36,15 @@ const SignIn = () => {
   };
 
   return (
-    <section>
+    <section className="signin-section">
       <div className="wrapper">
+        <h2>Sign In</h2>
+        <div className={error ? "login-message active" : "login-message"}>
+          {error}
+        </div>
         <div className="signupPage">
           <form onSubmit={handleSubmit}>
             <fieldset>
-              <legend>Sign In</legend>
               <label htmlFor="email">E-mail</label>
               <input
                 type="email"
@@ -65,11 +68,9 @@ const SignIn = () => {
             </fieldset>
             <button>Log In</button>
           </form>
-          <div className="login-message">{error}</div>
+          <button onClick={handleAnon}>Login Anonymously</button>
           <div className="account-exists">
-            Please contact Shannon to create an account 🙂
-            <p>Check out the app anonymously</p>
-            <button onClick={handleAnon}>Guest Login</button>
+            Need an account? Contact Shannon 😗
           </div>
         </div>
       </div>

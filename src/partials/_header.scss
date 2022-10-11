@@ -1,7 +1,62 @@
 header{
     height:100vh;
-    border:2px red solid;
-    min-width:20%;
+    min-width:200px;
     width:20%;
     position: fixed;
+    font-family:$source;
+
+    .wrapper{
+        display:flex;
+        flex-direction:column;
+        justify-content:space-evenly;
+        height:100%;
+    }
+
+    img{
+        width:100%;
+    }
+
+    ul{
+        padding:0;
+        height:30vh;
+        display:flex;
+        flex-direction:column;
+        list-style:none;
+        justify-content:space-between;
+
+        a{
+            text-decoration:none;
+            color:$black;
+            text-transform:uppercase;
+            transition:padding 0.3s, color 0.3s;
+    
+            &:hover{
+                padding-left:20px;
+                color:$red;
+            }
+        }
+    }
+
+
+
+    .user-info{
+        display:flex;
+        flex-direction:column;
+        justify-content:space-evenly;
+        height:20vh;
+    }
+
+    button{
+        @include button;
+    }
 }
+
+header.darkTheme{
+    background-color:$black;
+    color:$white;
+
+    a{
+        color:$white;
+    }
+}
+

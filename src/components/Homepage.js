@@ -1,8 +1,11 @@
 import { UserAuth } from "../contexts/AuthContext";
-import { useNavigate, Link, Outlet } from "react-router-dom";
+import { useContext } from "react";
+import { useNavigate, NavLink, Outlet, Link } from "react-router-dom";
+import { DarkModeContext } from "../contexts/DarkModeContext";
 
 const Homepage = () => {
   const { user, logoutUser } = UserAuth();
+  const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
 
   const navigate = useNavigate();
 
@@ -17,31 +20,52 @@ const Homepage = () => {
 
   return (
     <>
-      <header>
+      <header className={darkMode ? "darkTheme" : "lightTheme"}>
         <div className="wrapper">
-          <h1>Perplexity Escape Games Digital Scoreboard</h1>
+          <div className="header-title">
+            <Link to="/">
+              <img
+                src={
+                  darkMode
+                    ? require("../assets/logo-white.jpg")
+                    : require("../assets/logo-regular.png")
+                }
+                alt="Perplexity Escape Games logo"
+              />
+            </Link>
+            <h2>Digital Scoreboard</h2>
+          </div>
           <nav>
             <ul>
               <li>
-                <Link to="/">Dashboard</Link>
+                <NavLink to="/">Dashboard</NavLink>
               </li>
               <li>
-                <Link to="/scoreboard">Scoreboard</Link>
+                <NavLink to="/scoreboard">Scoreboard</NavLink>
               </li>
               <li>
-                <Link to="/add">Add Stats</Link>
+                <NavLink to="/add">Add Stats</NavLink>
               </li>
               <li>
-                <Link to="/recent">Recent Stats</Link>
+                <NavLink to="/recent">Recent Stats</NavLink>
               </li>
               <li>
-                <Link to="/edit">Edit Stats</Link>
+                <NavLink to="/edit">Edit Stats</NavLink>
               </li>
             </ul>
           </nav>
           <div className="user-info">
             <p>Current User: {!user.isAnonymous ? user.email : "Anon"}</p>
-            <button onClick={handleLogout}>Log Out</button>
+            <button onClick={handleLogout} title="Sign out of this account">
+              Log Out
+            </button>
+            <button
+              onClick={() => {
+                toggleDarkMode();
+              }}
+            >
+              {darkMode ? "Let there be light!" : "Turn off the lights!"}
+            </button>
           </div>
         </div>
       </header>

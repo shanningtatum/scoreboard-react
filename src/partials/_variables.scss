@@ -1,6 +1,48 @@
 // FONT 
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+Pro:wght@400;600&display=swap');
 
 $bebas:'Bebas Neue', sans-serif;
+$source:'Source Sans Pro', sans-serif;
+
+// COLORS
+
+$black:#000;
+$red:#d42025;
+$white:#fff;
+
+@mixin button{
+    background-color:$red;
+    font-family:$bebas;
+    font-size:clamp(0.9rem, 4vw, 1.2rem);
+    border:2px $red solid;
+    color:$white;
+    padding:10px 5px;
+    text-transform:uppercase;
+    transition:background-color 0.3s, color 0.3s;
+
+    &:hover, &:focus{
+        background-color:$white;
+        color:$black;
+    }
+}
+
+@mixin signinButton{
+    background-color:$white;
+    border:2px $white solid;
+    color:$black;
+    padding:10px 5px;
+    text-transform:uppercase;
+    font-family:$bebas;
+    transition:transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    box-shadow:8px 8px $black;
+
+
+    &:hover, &:focus{
+        transform:translateY(5px) translateX(5px);
+        box-shadow:3px 3px $black;
+        border:2px $black solid;
+        background-color:$red;
+    }
+}
 

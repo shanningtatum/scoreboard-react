@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+Pro:wght@400;600&display=swap");
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -218,6 +218,10 @@ template {
   overflow: hidden;
 }
 
+html {
+  font-size: 125%;
+}
+
 .wrapper {
   max-width: 1280px;
   width: 80%;
@@ -231,24 +235,126 @@ main {
   height: 100vh;
 }
 
+section {
+  height: 100vh;
+}
+
 h1 {
+  font-family: "Bebas Neue", sans-serif;
+  text-align: center;
+}
+
+header h2 {
+  text-align: center;
   font-family: "Bebas Neue", sans-serif;
 }
 
-.signupPage {
+@-webkit-keyframes shake {
+  0% {
+    transform: translateX(0px);
+  }
+  20% {
+    transform: translateX(30px);
+  }
+  25% {
+    transform: translateX(0px);
+  }
+  30% {
+    transform: translateX(30px);
+  }
+  35% {
+    transform: translateX(0px);
+  }
+  40% {
+    transform: translateX(30px);
+  }
+  45% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0px);
+  }
+  20% {
+    transform: translateX(30px);
+  }
+  25% {
+    transform: translateX(0px);
+  }
+  30% {
+    transform: translateX(30px);
+  }
+  35% {
+    transform: translateX(0px);
+  }
+  40% {
+    transform: translateX(30px);
+  }
+  45% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+.signin-section {
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #fff;
+}
+.signin-section .wrapper {
+  background-color: #d42025;
+}
+.signin-section h2 {
+  text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  color: #fff;
+}
+.signin-section .login-message {
+  display: none;
+  text-align: center;
+  padding: 10px;
+  background-color: #fff;
+  color: #d42025;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: 0 auto;
+  border-radius: 20px;
+  border: 2px #fff solid;
+  -webkit-animation: shake 0.9s forwards;
+          animation: shake 0.9s forwards;
+  transition: transform 0.3s;
+}
+.signin-section .login-message.active {
+  display: block;
+}
+.signin-section .account-exists {
+  text-align: center;
+}
+.signin-section .signupPage {
+  font-family: "Source Sans Pro", sans-serif;
+  display: flex;
+  flex-direction: column;
+  background-color: #d42025;
+  padding-bottom: 50px;
+}
+.signin-section .signupPage form {
   display: flex;
   flex-direction: column;
 }
-.signupPage form {
-  display: flex;
-  flex-direction: column;
-  border: 2px red solid;
-}
-.signupPage button {
+.signin-section .signupPage button {
   width: 80%;
   margin: 0 auto;
 }
-.signupPage fieldset {
+.signin-section .signupPage fieldset {
   border: none;
   display: flex;
   flex-direction: column;
@@ -256,21 +362,110 @@ h1 {
   width: 100%;
   padding: 20px 0;
 }
-.signupPage legend {
+.signin-section .signupPage legend {
   margin: 0 auto;
 }
-.signupPage input, .signupPage label {
+.signin-section .signupPage input {
+  border: 2px #000 solid;
+  padding: 10px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+.signin-section .signupPage input::-moz-placeholder {
+  font-family: "Source Sans Pro", sans-serif;
+}
+.signin-section .signupPage input:-ms-input-placeholder {
+  font-family: "Source Sans Pro", sans-serif;
+}
+.signin-section .signupPage input::placeholder {
+  font-family: "Source Sans Pro", sans-serif;
+}
+.signin-section .signupPage label {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.signin-section .signupPage input, .signin-section .signupPage label {
   width: 80%;
-  margin: 0 auto;
+  margin: 10px auto;
 }
-.signupPage .account-exists {
-  text-align: center;
+.signin-section .signupPage button {
+  background-color: #fff;
+  border: 2px #fff solid;
+  color: #000;
+  padding: 10px 5px;
+  text-transform: uppercase;
+  font-family: "Bebas Neue", sans-serif;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  box-shadow: 8px 8px #000;
+  width: 30%;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+.signin-section .signupPage button:hover, .signin-section .signupPage button:focus {
+  transform: translateY(5px) translateX(5px);
+  box-shadow: 3px 3px #000;
+  border: 2px #000 solid;
+  background-color: #d42025;
 }
 
 header {
   height: 100vh;
-  border: 2px red solid;
-  min-width: 20%;
+  min-width: 200px;
   width: 20%;
   position: fixed;
+  font-family: "Source Sans Pro", sans-serif;
+}
+header .wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+header img {
+  width: 100%;
+}
+header ul {
+  padding: 0;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  justify-content: space-between;
+}
+header ul a {
+  text-decoration: none;
+  color: #000;
+  text-transform: uppercase;
+  transition: padding 0.3s, color 0.3s;
+}
+header ul a:hover {
+  padding-left: 20px;
+  color: #d42025;
+}
+header .user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 20vh;
+}
+header button {
+  background-color: #d42025;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(0.9rem, 4vw, 1.2rem);
+  border: 2px #d42025 solid;
+  color: #fff;
+  padding: 10px 5px;
+  text-transform: uppercase;
+  transition: background-color 0.3s, color 0.3s;
+}
+header button:hover, header button:focus {
+  background-color: #fff;
+  color: #000;
+}
+
+header.darkTheme {
+  background-color: #000;
+  color: #fff;
+}
+header.darkTheme a {
+  color: #fff;
 }/*# sourceMappingURL=App.css.map */
