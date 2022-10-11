@@ -4,7 +4,6 @@ import SignIn from "../pages/SignIn";
 import { Routes, Route, Outlet } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Error from "./Error";
-import MainContainer from "./MainContainer";
 import Scoreboard from "../pages/Scoreboard";
 import AddStats from "../pages/AddStats";
 import RecentStats from "../pages/RecentStats";
@@ -19,7 +18,7 @@ function App() {
         <SignIn />
       ) : (
         <Routes>
-          {/* <Route path="*" element={<Error />} /> */}
+          <Route path="*" element={<Error />} />
           <Route path="/signup" element={<SignIn />} />
           <Route
             path="/"

@@ -1,9 +1,5 @@
 import { UserAuth } from "../contexts/AuthContext";
 import { useNavigate, Link, Outlet } from "react-router-dom";
-import MainContainer from "./MainContainer";
-import AddStats from "../pages/AddStats";
-import EditStats from "../pages/EditStats";
-import Scoreboard from "../pages/Scoreboard";
 
 const Homepage = () => {
   const { user, logoutUser } = UserAuth();
@@ -27,7 +23,7 @@ const Homepage = () => {
           <nav>
             <ul>
               <li>
-                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/">Dashboard</Link>
               </li>
               <li>
                 <Link to="/scoreboard">Scoreboard</Link>
@@ -49,9 +45,9 @@ const Homepage = () => {
           </div>
         </div>
       </header>
-      <MainContainer>
+      <main id="mainContent">
         <Outlet />
-      </MainContainer>
+      </main>
     </>
   );
 };
