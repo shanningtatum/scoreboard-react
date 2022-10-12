@@ -1,5 +1,6 @@
 .add-stats{
     font-family:$source;
+    position: relative;
 
     .wrapper.anon{
         height:80vh;
@@ -90,5 +91,21 @@
 
     img{
         width:50%;
+    }
+}
+
+// Message modal popup
+
+.error-modal{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background-color:rgba($black, $alpha:0.5);
+
+    .modal-message{
+        position: absolute;
+        top:0;
     }
 }

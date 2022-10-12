@@ -9,6 +9,7 @@ const Homepage = () => {
 
   const navigate = useNavigate();
 
+  // handles user log out
   const handleLogout = async () => {
     try {
       await logoutUser();

@@ -12,14 +12,14 @@ const AddStats = () => {
   const [toggleTime, setToggleTime] = useState(false);
 
   // setting states for user input
-  const [roomInput, setRoomInput] = useState("");
-  const [passInput, setPassInput] = useState(false);
+  const [roomInput, setRoomInput] = useState(undefined);
+  const [passInput, setPassInput] = useState(undefined);
   const [timeInput, setTimeInput] = useState("");
-  const [hintInput, setHintInput] = useState("");
-  const [playerInput, setPlayerInput] = useState("");
+  const [hintInput, setHintInput] = useState(undefined);
+  const [playerInput, setPlayerInput] = useState(undefined);
 
   // state for error messages
-  const [errorMessage, setErrorMessage] = useState();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [roomStatInfo, setRoomStatInfo] = useState({});
 
@@ -46,31 +46,41 @@ const AddStats = () => {
   };
 
   const handleSubmit = () => {
+    // check if any fields are empty.
+    // if empty, return error message
+
     if (
-      roomInput === "" ||
-      passInput === undefined ||
-      timeInput === "" ||
-      hintInput === "" ||
-      playerInput === ""
+      roomInput == undefined ||
+      passInput == undefined ||
+      timeInput == undefined ||
+      hintInput == undefined ||
+      playerInput == undefined ||
+      (passInput == true && timeInput == "")
     ) {
-      alert("Please fill in all fields");
+      setErrorMessage("Please fill in all fields");
+    } else if (roomInput && passInput && timeInput && hintInput && passInput) {
+      setErrorMessage("Successfully added new stat!");
+
+      // stores user selection into an object to push into firebase
+      const roomStat = {
+        name: roomInput,
+        pass: passInput,
+        time: timeInput,
+        hint: hintInput,
+        player: playerInput,
+      };
+
+      setRoomStatInfo(roomStat);
+
+      // clears all states/ unchecked radio buttons
+      setRoomInput(undefined);
+      setPassInput(undefined);
+      setTimeInput("");
+      setHintInput(undefined);
+      setPlayerInput(undefined);
+    } else {
+      setErrorMessage("Please fill in time remaining");
     }
-
-    const roomStat = {
-      name: roomInput,
-      pass: passInput,
-      time: timeInput,
-      hints: hintInput,
-      players: playerInput,
-    };
-
-    setRoomStatInfo(roomStat);
-
-    setRoomInput("");
-    setPassInput(false);
-    setTimeInput("");
-    setHintInput("");
-    setPlayerInput("");
   };
 
   return (
@@ -98,6 +108,12 @@ const AddStats = () => {
         ) : (
           <>
             <h2>Add Stats</h2>
+            <div className="error-modal">
+              <div className="modal-container">
+                {errorMessage}
+                <button>Ok</button>
+              </div>
+            </div>
             <form>
               <fieldset id="room-input">
                 <legend>Room Name</legend>

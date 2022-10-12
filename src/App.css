@@ -481,6 +481,7 @@ header.darkTheme a {
 
 .add-stats {
   font-family: "Source Sans Pro", sans-serif;
+  position: relative;
 }
 .add-stats .wrapper.anon {
   height: 80vh;
@@ -576,4 +577,17 @@ header.darkTheme a {
 }
 .error-message img {
   width: 50%;
+}
+
+.error-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.error-modal .modal-message {
+  position: absolute;
+  top: 0;
 }/*# sourceMappingURL=App.css.map */
