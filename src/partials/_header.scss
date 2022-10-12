@@ -4,6 +4,7 @@ header{
     width:20%;
     position: fixed;
     font-family:$source;
+    border-right:2px $black solid;
 
     .wrapper{
         display:flex;
@@ -48,6 +49,7 @@ header{
 
     button{
         @include button;
+        cursor:pointer;
     }
 }
 

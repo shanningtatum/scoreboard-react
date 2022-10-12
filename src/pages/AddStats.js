@@ -12,11 +12,11 @@ const AddStats = () => {
   const [toggleTime, setToggleTime] = useState(false);
 
   // setting states for user input
-  const [roomInput, setRoomInput] = useState();
-  const [passInput, setPassInput] = useState();
-  const [timeInput, setTimeInput] = useState();
-  const [hintInput, setHintInput] = useState();
-  const [playerInput, setPlayerInput] = useState();
+  const [roomInput, setRoomInput] = useState("");
+  const [passInput, setPassInput] = useState(false);
+  const [timeInput, setTimeInput] = useState("");
+  const [hintInput, setHintInput] = useState("");
+  const [playerInput, setPlayerInput] = useState("");
 
   // state for error messages
   const [errorMessage, setErrorMessage] = useState();
@@ -30,6 +30,11 @@ const AddStats = () => {
     setRoomInput(e.target.value);
   };
 
+  // -- Pass Input
+  const handlePass = (e) => {
+    setPassInput(e.target.value);
+  };
+
   // -- Hint Input
   const handleHint = (e) => {
     setHintInput(e.target.value);
@@ -41,7 +46,15 @@ const AddStats = () => {
   };
 
   const handleSubmit = () => {
-    console.log(roomInput, passInput, timeInput, hintInput, playerInput);
+    if (
+      roomInput === "" ||
+      passInput === undefined ||
+      timeInput === "" ||
+      hintInput === "" ||
+      playerInput === ""
+    ) {
+      alert("Please fill in all fields");
+    }
 
     const roomStat = {
       name: roomInput,
@@ -52,11 +65,12 @@ const AddStats = () => {
     };
 
     setRoomStatInfo(roomStat);
-    setRoomInput();
-    setPassInput();
-    setTimeInput();
-    setHintInput();
-    setPlayerInput();
+
+    setRoomInput("");
+    setPassInput(false);
+    setTimeInput("");
+    setHintInput("");
+    setPlayerInput("");
   };
 
   return (
@@ -64,18 +78,26 @@ const AddStats = () => {
       id="addStats"
       className={darkMode ? "add-stats darkTheme" : "add-stats"}
     >
-      <div className="wrapper">
-        <h2>Add Stats</h2>
+      <div className={!user.email ? "wrapper anon" : "wrapper"}>
         {!user.email ? (
-          <>
-            <h3>Oops...</h3>
-            <h4>
-              It seems you are not logged in. Only registered accounts can add
-              stats. <Link to="/signup">Sign in</Link> to use this feature.
-            </h4>
-          </>
+          <div className="error-message">
+            <div className="error-text">
+              <h3>Oops...</h3>
+              <h4>
+                It seems you are not logged in. Only registered accounts can add
+                stats. <Link to="/signup">Sign in</Link> to use this feature.
+              </h4>
+            </div>
+            <div className="error-image">
+              <img
+                src={require("../assets/error-image.png")}
+                alt="A person holding a magnifying glass and a question mark near their head"
+              />
+            </div>
+          </div>
         ) : (
           <>
+            <h2>Add Stats</h2>
             <form>
               <fieldset id="room-input">
                 <legend>Room Name</legend>
@@ -101,9 +123,11 @@ const AddStats = () => {
                   type="radio"
                   name="pass-input"
                   id="pass-yes"
-                  onClick={() => {
+                  checked={passInput === "true"}
+                  onChange={(e) => {
                     setToggleTime(true);
-                    setPassInput(true);
+                    handlePass(e);
+                    setTimeInput("");
                   }}
                   value={true}
                 />
@@ -112,9 +136,10 @@ const AddStats = () => {
                   type="radio"
                   name="pass-input"
                   id="pass-no"
-                  onClick={() => {
+                  checked={passInput === "false"}
+                  onChange={(e) => {
                     setToggleTime(false);
-                    setPassInput(false);
+                    handlePass(e);
                     setTimeInput("N/A");
                   }}
                   value={false}
@@ -127,12 +152,14 @@ const AddStats = () => {
               >
                 <legend>Time Remaining</legend>
                 <input
-                  type="number"
+                  type="text"
                   name="time-input"
                   placeholder="12:43 or 1243"
                   onChange={(e) => {
                     setTimeInput(e.target.value);
                   }}
+                  value={timeInput}
+                  maxLength="5"
                   required
                 />
               </fieldset>
@@ -141,6 +168,7 @@ const AddStats = () => {
                 <input
                   type="radio"
                   name="hint-input"
+                  checked={hintInput === "0"}
                   id="hint-0"
                   value="0"
                   onChange={(e) => {
@@ -151,6 +179,7 @@ const AddStats = () => {
                 <input
                   type="radio"
                   name="hint-input"
+                  checked={hintInput === "1"}
                   id="hint-1"
                   value="1"
                   onChange={(e) => {
@@ -161,6 +190,7 @@ const AddStats = () => {
                 <input
                   type="radio"
                   name="hint-input"
+                  checked={hintInput === "2"}
                   id="hint-2"
                   value="2"
                   onChange={(e) => {
@@ -171,6 +201,7 @@ const AddStats = () => {
                 <input
                   type="radio"
                   name="hint-input"
+                  checked={hintInput === "3"}
                   id="hint-3"
                   value="3"
                   onChange={(e) => {
@@ -181,6 +212,7 @@ const AddStats = () => {
                 <input
                   type="radio"
                   name="hint-input"
+                  checked={hintInput === "4+"}
                   id="hint-4"
                   value="4plus"
                   onChange={(e) => {
@@ -195,6 +227,7 @@ const AddStats = () => {
                   type="radio"
                   name="player-input"
                   id="player-2"
+                  checked={playerInput === "2"}
                   value="2"
                   onChange={(e) => {
                     handlePlayer(e);
@@ -205,6 +238,7 @@ const AddStats = () => {
                   type="radio"
                   name="player-input"
                   id="player-3"
+                  checked={playerInput === "3"}
                   value="3"
                   onChange={(e) => {
                     handlePlayer(e);
@@ -215,6 +249,7 @@ const AddStats = () => {
                   type="radio"
                   name="player-input"
                   id="player-4"
+                  checked={playerInput === "4"}
                   value="4"
                   onChange={(e) => {
                     handlePlayer(e);
@@ -225,6 +260,7 @@ const AddStats = () => {
                   type="radio"
                   name="player-input"
                   id="player-5"
+                  checked={playerInput === "5"}
                   value="5"
                   onChange={(e) => {
                     handlePlayer(e);
@@ -235,6 +271,7 @@ const AddStats = () => {
                   type="radio"
                   name="player-input"
                   id="player-6"
+                  checked={playerInput === "6"}
                   value="6"
                   onChange={(e) => {
                     handlePlayer(e);
@@ -245,6 +282,7 @@ const AddStats = () => {
                   type="radio"
                   name="player-input"
                   id="player-7"
+                  checked={playerInput === "7"}
                   value="7"
                   onChange={(e) => {
                     handlePlayer(e);
@@ -255,6 +293,7 @@ const AddStats = () => {
                   type="radio"
                   name="player-input"
                   id="player-8"
+                  checked={playerInput === "8"}
                   value="8"
                   onChange={(e) => {
                     handlePlayer(e);

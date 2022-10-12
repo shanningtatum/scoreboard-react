@@ -10,6 +10,7 @@ const SignIn = () => {
 
   const { loginUser, anonUser } = UserAuth();
 
+  // handles registered login
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -17,13 +18,15 @@ const SignIn = () => {
       await loginUser(loginEmail, loginPassword);
       navigate("/");
     } catch (e) {
-      if (e.message == "Firebase: Error (auth/user-not-found).") {
+      if (e.message === "Firebase: Error (auth/user-not-found).") {
         setError("Invalid Login");
       } else if ((e.message = "Firebase: Error (auth/wrong-password).")) {
         setError("Invalid Password");
       }
     }
   };
+
+  // handles anonymous login
   const handleAnon = async (e) => {
     e.preventDefault();
     setError("");

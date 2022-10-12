@@ -251,6 +251,10 @@ h2 {
   margin: 0;
 }
 
+section h2 {
+  padding-top: 50px;
+}
+
 @-webkit-keyframes shake {
   0% {
     transform: translateX(0px);
@@ -416,6 +420,7 @@ header {
   width: 20%;
   position: fixed;
   font-family: "Source Sans Pro", sans-serif;
+  border-right: 2px #000 solid;
 }
 header .wrapper {
   display: flex;
@@ -459,6 +464,7 @@ header button {
   padding: 10px 5px;
   text-transform: uppercase;
   transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
 }
 header button:hover, header button:focus {
   background-color: #fff;
@@ -476,6 +482,12 @@ header.darkTheme a {
 .add-stats {
   font-family: "Source Sans Pro", sans-serif;
 }
+.add-stats .wrapper.anon {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .add-stats h2 {
   font-family: "Bebas Neue", sans-serif;
   font-size: clamp(1.5rem, 4vw, 2rem);
@@ -483,6 +495,7 @@ header.darkTheme a {
 .add-stats fieldset {
   display: flex;
   padding: 0;
+  border: none;
   margin-bottom: 20px;
 }
 .add-stats fieldset div {
@@ -540,4 +553,27 @@ header.darkTheme a {
 }
 .add-stats .time-input.active {
   display: block;
+}
+
+.error-message {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+}
+.error-message h3 {
+  font-size: 5rem;
+  color: #d42025;
+  margin: 0;
+}
+.error-message .error-text {
+  text-align: center;
+}
+.error-message .error-image {
+  margin: 0 auto;
+  text-align: center;
+}
+.error-message img {
+  width: 50%;
 }/*# sourceMappingURL=App.css.map */

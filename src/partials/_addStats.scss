@@ -1,6 +1,13 @@
 .add-stats{
     font-family:$source;
 
+    .wrapper.anon{
+        height:80vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+    }
+
     h2{
         font-family:$bebas;
         font-size:clamp(1.5rem, 4vw, 2rem);
@@ -9,7 +16,7 @@
     fieldset{
         display:flex;
         padding:0;
-        // border:none;
+        border:none;
         margin-bottom:20px;
 
         div{
@@ -55,5 +62,33 @@
 
     .time-input.active{
         display:block;
+    }
+}
+
+
+// ERROR MESSAGE
+
+.error-message{
+    height:max-content;
+    display:flex;
+    flex-direction:column;
+
+    h3{
+        font-size:5rem;
+        color:$red;
+        margin:0;
+    }
+
+    .error-text{
+        text-align: center;
+    }
+
+    .error-image{
+        margin:0 auto;
+        text-align: center;
+    }
+
+    img{
+        width:50%;
     }
 }
