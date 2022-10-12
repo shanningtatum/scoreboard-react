@@ -3,10 +3,10 @@
     position: relative;
 
     .wrapper.anon{
-        height:80vh;
         display:flex;
         flex-direction:column;
         justify-content:center;
+        height:100vh;
     }
 
     h2{
@@ -34,6 +34,16 @@
             color:$black;
             transform:translateY(5px) translateX(5px);
             box-shadow:3px 3px $black;
+        }
+    }
+
+    input[type=text]{
+        border:2px $black solid;
+        padding:5px 10px;
+        font-family:$source;
+
+        &::placeholder{
+            font-family:$source;
         }
     }
 
@@ -66,6 +76,12 @@
     }
 }
 
+//dark mode
+.add-stats.darkTheme{
+    color:$white;
+    background-color:rgba($black, $alpha:0.85);
+}
+
 
 // ERROR MESSAGE
 
@@ -79,33 +95,64 @@
         color:$red;
         margin:0;
     }
-
+    h4{
+        margin:0;
+    }
     .error-text{
         text-align: center;
+        flex-basis:70%;
+        padding:40px;
     }
 
     .error-image{
         margin:0 auto;
         text-align: center;
+        flex-basis:30%;
+        width:100%;
     }
 
     img{
-        width:50%;
+        width:30%;
     }
 }
+
 
 // Message modal popup
 
 .error-modal{
+    display:none;
     position: absolute;
+    text-align: center;
     top:0;
     left:0;
     width:100vw;
     height:100vh;
-    background-color:rgba($black, $alpha:0.5);
+    background-color:rgba($black, $alpha:0.8);
+    z-index:10;
 
-    .modal-message{
-        position: absolute;
-        top:0;
+    .modal-container{
+        display:flex;
+        flex-direction:column;
+        background-color:$red;
+        width:50%;
+        height:200px;
+        margin:auto;
+        border:2px $black solid;
+        justify-content:space-evenly;
+        color:$white;
     }
+
+    button{
+        @include addStatButton;
+        padding:10px 5px;
+        border:2px $black solid;
+        background-color:$white;
+        color:$black;
+        width:50%;
+        margin:0 auto;
+    }
+}
+
+.error-modal.active{
+    display:flex;
 }

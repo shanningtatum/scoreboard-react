@@ -5,6 +5,8 @@ header{
     position: fixed;
     font-family:$source;
     border-right:2px $black solid;
+    background-color:rgba($black, $alpha:0.3);
+    
 
     .wrapper{
         display:flex;
@@ -50,6 +52,10 @@ header{
     button{
         @include button;
         cursor:pointer;
+    }
+
+    .active-link{
+        color:orange;
     }
 }
 
