@@ -229,10 +229,8 @@ html {
 }
 
 main {
-  border: 2px red solid;
   width: 80%;
   margin-left: auto;
-  height: 100vh;
 }
 
 section {
@@ -247,6 +245,10 @@ h1 {
 header h2 {
   text-align: center;
   font-family: "Bebas Neue", sans-serif;
+}
+
+h2 {
+  margin: 0;
 }
 
 @-webkit-keyframes shake {
@@ -311,6 +313,8 @@ header h2 {
 }
 .signin-section .wrapper {
   background-color: #d42025;
+  border: 2px #000 solid;
+  padding: 50px 0;
 }
 .signin-section h2 {
   text-align: center;
@@ -344,7 +348,6 @@ header h2 {
   display: flex;
   flex-direction: column;
   background-color: #d42025;
-  padding-bottom: 50px;
 }
 .signin-section .signupPage form {
   display: flex;
@@ -468,4 +471,73 @@ header.darkTheme {
 }
 header.darkTheme a {
   color: #fff;
+}
+
+.add-stats {
+  font-family: "Source Sans Pro", sans-serif;
+}
+.add-stats h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+.add-stats fieldset {
+  display: flex;
+  padding: 0;
+  margin-bottom: 20px;
+}
+.add-stats fieldset div {
+  display: flex;
+  flex-direction: column;
+}
+.add-stats input[type=radio] {
+  display: none;
+}
+.add-stats input[type=radio]:checked + label {
+  background-color: white;
+  color: #000;
+  transform: translateY(5px) translateX(5px);
+  box-shadow: 3px 3px #000;
+}
+.add-stats label {
+  background-color: #d42025;
+  box-shadow: 8px 8px #000;
+  font-family: "Bebas Neue", sans-serif;
+  color: #fff;
+  border: 2px #d42025 solid;
+  cursor: pointer;
+  padding: 10px 20px;
+  white-space: nowrap;
+  margin-right: 20px;
+  transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
+}
+.add-stats label:hover, .add-stats label:focus {
+  background-color: white;
+  transform: translateY(5px) translateX(5px);
+  box-shadow: 3px 3px #000;
+  color: #000;
+}
+.add-stats legend {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  margin-bottom: 20px;
+}
+.add-stats button {
+  background-color: #d42025;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(0.9rem, 4vw, 1.2rem);
+  border: 2px #d42025 solid;
+  color: #fff;
+  padding: 10px 5px;
+  text-transform: uppercase;
+  transition: background-color 0.3s, color 0.3s;
+}
+.add-stats button:hover, .add-stats button:focus {
+  background-color: #fff;
+  color: #000;
+}
+.add-stats .time-input {
+  display: none;
+}
+.add-stats .time-input.active {
+  display: block;
 }/*# sourceMappingURL=App.css.map */

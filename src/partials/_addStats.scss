@@ -1,0 +1,59 @@
+.add-stats{
+    font-family:$source;
+
+    h2{
+        font-family:$bebas;
+        font-size:clamp(1.5rem, 4vw, 2rem);
+    }
+
+    fieldset{
+        display:flex;
+        padding:0;
+        // border:none;
+        margin-bottom:20px;
+
+        div{
+            display:flex;
+            flex-direction:column;
+        }
+    }
+
+    input[type=radio]{
+        display:none;
+
+        &:checked +label{
+            background-color:white;
+            color:$black;
+            transform:translateY(5px) translateX(5px);
+            box-shadow:3px 3px $black;
+        }
+    }
+
+    label{
+        @include addStatButton;
+        padding:10px 20px;
+        white-space:nowrap;
+        margin-right:20px;
+        transition:transform 0.3s, box-shadow 0.3s, color 0.3s;
+    }
+
+
+    legend{
+        font-family:$bebas;
+        font-size:clamp(1.2rem, 4vw, 1.5rem);
+        margin-bottom:20px;
+    }
+
+
+    button{
+        @include button;
+    }
+
+    .time-input{
+        display:none;
+    }
+
+    .time-input.active{
+        display:block;
+    }
+}

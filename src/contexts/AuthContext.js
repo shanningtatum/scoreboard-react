@@ -30,7 +30,6 @@ export const AuthContextProvider = ({ children }) => {
   // this will only run if the auth state changes (user signs in, signs out)
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
       setUser(currentUser);
     });
 
