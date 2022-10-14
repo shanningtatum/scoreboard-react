@@ -54,3 +54,51 @@ export const calculateDate = () => {
   const currentDate = `${currentMonth} ${currentDay}, ${currentYear}`;
   return currentDate + " " + currentTime;
 };
+
+export const calculateTime = (room, time) => {
+  // take time, if it has : , replace it with ''
+  time = time.replace(":", "");
+
+  // makes time 4 digits so it can be spliced evenly
+  if (time.length <= 3) {
+    time = time.padStart(4, "0");
+  }
+
+  // take the last two digits of time - this will be seconds
+  const seconds = time.slice(-2);
+
+  // take the remaining digits of time - this will be minutes
+  const minutes = time.slice(0, 2);
+
+  // if seconds is 00, no need to carry over the 10s in the 60 seconds
+  if (seconds === "00") {
+    const remainingSeconds = seconds;
+    if (room === "The Last Laugh") {
+      const remainingMinutes = 75 - minutes;
+
+      time = `${remainingMinutes}:${remainingSeconds}`;
+      return time;
+    } else {
+      const remainingMinutes = 60 - minutes;
+
+      time = `${remainingMinutes}:${remainingSeconds}`;
+      return time;
+    }
+
+    // if seconds is more than 00, need to borrow from 10s in the 60 seconds, essentially taking a minute -- hence why the minutes is subtracted by (total time - 1min)
+  } else {
+    const remainingSeconds = 60 - seconds;
+
+    if (room === "The Last Laugh") {
+      const remainingMinutes = 74 - minutes;
+
+      time = `${remainingMinutes}:${remainingSeconds}`;
+      return time;
+    } else {
+      const remainingMinutes = 59 - minutes;
+
+      time = `${remainingMinutes}:${remainingSeconds}`;
+      return time;
+    }
+  }
+};

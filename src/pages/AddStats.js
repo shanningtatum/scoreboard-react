@@ -1,6 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { roomNames, calculateDate } from "../components/roomNames";
+import {
+  roomNames,
+  calculateDate,
+  calculateTime,
+} from "../components/roomNames";
 import { DarkModeContext } from "../contexts/DarkModeContext";
 import { UserAuth } from "../contexts/AuthContext";
 import firebase from "../firebase";
@@ -19,6 +23,7 @@ const AddStats = () => {
   const [timeInput, setTimeInput] = useState("");
   const [hintInput, setHintInput] = useState(undefined);
   const [playerInput, setPlayerInput] = useState(undefined);
+  const [timeRemain, setTimeRemain] = useState("");
 
   // state for error messages
   const [errorMessage, setErrorMessage] = useState("");
@@ -32,22 +37,22 @@ const AddStats = () => {
 
   // creating functions for storing user input into their states
   // -- Room Input
-  const handleRoom = (e) => {
+  const handleRoom = async (e) => {
     setRoomInput(e.target.value);
   };
 
   // -- Pass Input
-  const handlePass = (e) => {
+  const handlePass = async (e) => {
     setPassInput(e.target.value);
   };
 
   // -- Hint Input
-  const handleHint = (e) => {
+  const handleHint = async (e) => {
     setHintInput(e.target.value);
   };
 
   // -- Player Input
-  const handlePlayer = (e) => {
+  const handlePlayer = async (e) => {
     setPlayerInput(e.target.value);
   };
 
@@ -66,24 +71,35 @@ const AddStats = () => {
     } else if (roomInput && passInput && timeInput && hintInput && passInput) {
       // get date timestamp function
       const date = calculateDate();
+
+      if (timeInput !== "") {
+        const remainingTime = calculateTime(roomInput, timeInput);
+
+        setTimeRemain(remainingTime);
+      } else {
+        const remainTime = async () => {
+          setTimeRemain(timeInput);
+        };
+        remainTime();
+      }
+
       // stores user selection into an object to push into firebase
       const roomStat = {
         date: date,
         name: roomInput,
         pass: passInput,
-        time: timeInput,
+        time: timeRemain,
         hint: hintInput,
         player: playerInput,
       };
 
-      push(dbRef, roomStatInfo)
+      console.log(roomStat);
+
+      push(dbRef, roomStat)
         .then(() => {
           // set success error message
           setErrorMessage("Successfully added new stat!");
           setToggleModal(true);
-
-          // add room stat to database
-          setRoomStatInfo(roomStat);
 
           // clears all states/unchecked radio buttons
           setRoomInput(undefined);
@@ -91,6 +107,7 @@ const AddStats = () => {
           setTimeInput("");
           setHintInput(undefined);
           setPlayerInput(undefined);
+          setToggleTime(false);
         })
         .catch((error) => {
           // keep this
@@ -256,7 +273,7 @@ const AddStats = () => {
                     name="hint-input"
                     checked={hintInput === "4+"}
                     id="hint-4"
-                    value="4plus"
+                    value="4+"
                     onChange={(e) => {
                       handleHint(e);
                     }}
