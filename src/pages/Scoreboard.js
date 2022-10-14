@@ -8,7 +8,9 @@ const Scoreboard = () => {
 
   return (
     <section id="scoreboard">
-      <div className="wrapper">Scoreboard</div>
+      <div className="wrapper">
+        <h2>Scoreboard</h2>
+      </div>
     </section>
   );
 };

@@ -71,7 +71,10 @@ const Homepage = () => {
           </div>
         </div>
       </header>
-      <main id="mainContent">
+      <main
+        id="mainContent"
+        className={darkMode ? "main-content darkTheme" : "main-content"}
+      >
         <Outlet />
       </main>
     </>

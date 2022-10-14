@@ -1,0 +1,52 @@
+.error-page{
+    display:flex;
+    justify-content: center;
+    background-color:rgba($black, $alpha:0.7);
+
+    .wrapper{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        height:50vh;
+        margin:auto;
+    }
+
+    .error-text{
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+        text-align: center;
+        height:60%;
+        color:$white;
+    }
+
+    .error-image{
+        background-color:$white;
+        width:250px;
+        height:250px;
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items: center;
+        margin:0 auto;
+        border:2px $black solid;    
+    }
+
+    .error-image-container{
+        width:100%;
+        img{
+            max-width:100%;
+        }
+                    
+    }
+
+    a{
+        @include button;
+        padding:10px 20px;
+        border:2px $black solid;
+        text-decoration:none;
+    }
+    
+
+
+}

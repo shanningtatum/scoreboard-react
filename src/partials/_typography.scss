@@ -15,5 +15,19 @@ h2{
 }
 
 section h2{
-    padding-top:20px;
+    padding:20px 0 10px;
+    margin-bottom:20px;
+    position: relative;
+    font-family:$bebas;
+    font-size:clamp(1.5rem, 4vw, 2rem);
+    
+
+    &::before{
+        position: absolute;
+        content:'';
+        width:100px;
+        height:5px;
+        background-color:$red;
+        bottom:0;
+    }
 }

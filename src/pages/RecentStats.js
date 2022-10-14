@@ -4,7 +4,7 @@ const RecentStats = () => {
   return (
     <section id="recentStats">
       <div className="wrapper">
-        <h2>RecentStats</h2>
+        <h2>Recent Stats</h2>
       </div>
     </section>
   );

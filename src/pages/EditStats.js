@@ -4,7 +4,7 @@ const EditStats = () => {
   return (
     <section id="editStats">
       <div className="wrapper">
-        <h2>EditStats</h2>
+        <h2>Edit Stats</h2>
       </div>
     </section>
   );

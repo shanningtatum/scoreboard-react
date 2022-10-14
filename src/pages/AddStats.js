@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { roomNames } from "../components/roomNames";
 import { DarkModeContext } from "../contexts/DarkModeContext";
 import { UserAuth } from "../contexts/AuthContext";
+import firebase from "../firebase";
+import { getDatabase, ref, push } from "firebase/database";
 
 const AddStats = () => {
   // declaring variable from AuthContext
@@ -24,8 +26,11 @@ const AddStats = () => {
   // state to store user input to push to database
   const [roomStatInfo, setRoomStatInfo] = useState({});
 
-  // creating functions for storing user input into their states
+  // declaring database stuff for Firebase
+  const database = getDatabase(firebase);
+  const dbRef = ref(database);
 
+  // creating functions for storing user input into their states
   // -- Room Input
   const handleRoom = (e) => {
     setRoomInput(e.target.value);
@@ -46,26 +51,30 @@ const AddStats = () => {
     setPlayerInput(e.target.value);
   };
 
-  //
+  // -- Create New Date
+  const getDate = () => {
+    const day = new Date();
+    return day;
+  };
 
   // trigger event when button is clicked - this will add the input fields info to database
   const handleSubmit = () => {
     if (
-      roomInput == undefined ||
-      passInput == undefined ||
-      timeInput == undefined ||
-      hintInput == undefined ||
-      playerInput == undefined ||
-      (passInput == true && timeInput == "")
+      roomInput === undefined ||
+      passInput === undefined ||
+      timeInput === undefined ||
+      hintInput === undefined ||
+      playerInput === undefined ||
+      (passInput === "true" && timeInput === "")
     ) {
       setErrorMessage("Please fill in all fields");
       setToggleModal(true);
     } else if (roomInput && passInput && timeInput && hintInput && passInput) {
-      setErrorMessage("Successfully added new stat!");
-      setToggleModal(true);
+      const timeStamp = getDate();
 
       // stores user selection into an object to push into firebase
       const roomStat = {
+        date: timeStamp,
         name: roomInput,
         pass: passInput,
         time: timeInput,
@@ -73,14 +82,26 @@ const AddStats = () => {
         player: playerInput,
       };
 
-      setRoomStatInfo(roomStat);
+      console.log(roomStat);
+      push(dbRef, roomStatInfo)
+        .then(() => {
+          // set success error message
+          setErrorMessage("Successfully added new stat!");
+          setToggleModal(true);
 
-      // clears all states/ unchecked radio buttons
-      setRoomInput(undefined);
-      setPassInput(undefined);
-      setTimeInput("");
-      setHintInput(undefined);
-      setPlayerInput(undefined);
+          // add room stat to database
+          setRoomStatInfo(roomStat);
+
+          // clears all states/unchecked radio buttons
+          setRoomInput(undefined);
+          setPassInput(undefined);
+          setTimeInput("");
+          setHintInput(undefined);
+          setPlayerInput(undefined);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     } else {
       setErrorMessage("Please fill in time remaining");
       setToggleModal(true);

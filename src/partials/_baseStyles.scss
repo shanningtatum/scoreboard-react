@@ -4,9 +4,23 @@
     margin:0 auto;
 }
 
+header{
+    background-color:rgba($nickel, $alpha:0.7);
+}
+
 main{
     width:80%;
     margin-left:auto;
+    height:100vh;
+}
+
+.main-content.darkTheme{
+    background-color:rgba(black, $alpha:0.75);
+    color:white;
+}
+
+.main-content {
+    background-color:rgba($grey, $alpha:0.3);
 }
 
 section{
