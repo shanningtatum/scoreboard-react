@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { roomNames } from "../components/roomNames";
+import { roomNames, calculateDate } from "../components/roomNames";
 import { DarkModeContext } from "../contexts/DarkModeContext";
 import { UserAuth } from "../contexts/AuthContext";
 import firebase from "../firebase";
@@ -51,12 +51,6 @@ const AddStats = () => {
     setPlayerInput(e.target.value);
   };
 
-  // -- Create New Date
-  const getDate = () => {
-    const day = new Date();
-    return day;
-  };
-
   // trigger event when button is clicked - this will add the input fields info to database
   const handleSubmit = () => {
     if (
@@ -70,11 +64,11 @@ const AddStats = () => {
       setErrorMessage("Please fill in all fields");
       setToggleModal(true);
     } else if (roomInput && passInput && timeInput && hintInput && passInput) {
-      const timeStamp = getDate();
-
+      // get date timestamp function
+      const date = calculateDate();
       // stores user selection into an object to push into firebase
       const roomStat = {
-        date: timeStamp,
+        date: date,
         name: roomInput,
         pass: passInput,
         time: timeInput,
@@ -82,7 +76,6 @@ const AddStats = () => {
         player: playerInput,
       };
 
-      console.log(roomStat);
       push(dbRef, roomStatInfo)
         .then(() => {
           // set success error message
@@ -100,6 +93,7 @@ const AddStats = () => {
           setPlayerInput(undefined);
         })
         .catch((error) => {
+          // keep this
           console.log(error);
         });
     } else {

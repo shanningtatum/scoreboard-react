@@ -15,6 +15,7 @@ const Homepage = () => {
       await logoutUser();
       navigate("/");
     } catch (e) {
+      // keep this, doesn't really do anything
       console.log(e.message);
     }
   };
