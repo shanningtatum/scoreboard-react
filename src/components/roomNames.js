@@ -67,8 +67,20 @@ export const calculateTime = (room, time) => {
   // take the last two digits of time - this will be seconds
   const seconds = time.slice(-2);
 
+  // ERROR HANDLING: If user inputs an invalid time where the seconds is greater than 59, it will return an error
+  if (time.length >= 4 && parseInt(seconds) > 59) {
+    return `Invalid Entry: Seconds`;
+  }
+
   // take the remaining digits of time - this will be minutes
   const minutes = time.slice(0, 2);
+
+  // ERROR HANDLING: If user inputs an invalid time where the minutes is greater than 75, it will return an error
+  if (room === "The Last Laugh" && parseInt(minutes) > 75) {
+    return "Invalid Entry: Minutes";
+  } else if (parseInt(minutes) > 60) {
+    return "Invalid Entry: Minutes";
+  }
 
   // if seconds is 00, no need to carry over the 10s in the 60 seconds
   if (seconds === "00") {

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   roomNames,
@@ -46,6 +46,11 @@ const AddStats = () => {
     setPassInput(e.target.value);
   };
 
+  // -- Time Input
+  const handleTime = async (e) => {
+    setTimeInput(e.target.value);
+  };
+
   // -- Hint Input
   const handleHint = async (e) => {
     setHintInput(e.target.value);
@@ -56,8 +61,10 @@ const AddStats = () => {
     setPlayerInput(e.target.value);
   };
 
+  // -- Runs when time remain updates
+
   // trigger event when button is clicked - this will add the input fields info to database
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (
       roomInput === undefined ||
       passInput === undefined ||
@@ -68,55 +75,64 @@ const AddStats = () => {
     ) {
       setErrorMessage("Please fill in all fields");
       setToggleModal(true);
-    } else if (roomInput && passInput && timeInput && hintInput && passInput) {
-      // get date timestamp function
-      const date = calculateDate();
+    } else if (
+      roomInput &&
+      passInput &&
+      timeInput &&
+      hintInput &&
+      playerInput
+    ) {
+      const remainingTime = await calculateTime(roomInput, timeInput);
 
-      if (timeInput !== "") {
-        const remainingTime = calculateTime(roomInput, timeInput);
-
-        setTimeRemain(remainingTime);
+      if (
+        remainingTime == "Invalid Entry: Minutes" ||
+        remainingTime == "Invalid Entry: Seconds"
+      ) {
+        console.log(remainingTime);
+        setErrorMessage(remainingTime);
+        setToggleModal(true);
       } else {
-        const remainTime = async () => {
-          setTimeRemain(timeInput);
-        };
-        remainTime();
+        console.log(remainingTime);
+        setTimeRemain(remainingTime);
+        addStat(remainingTime);
       }
-
-      // stores user selection into an object to push into firebase
-      const roomStat = {
-        date: date,
-        name: roomInput,
-        pass: passInput,
-        time: timeRemain,
-        hint: hintInput,
-        player: playerInput,
-      };
-
-      console.log(roomStat);
-
-      push(dbRef, roomStat)
-        .then(() => {
-          // set success error message
-          setErrorMessage("Successfully added new stat!");
-          setToggleModal(true);
-
-          // clears all states/unchecked radio buttons
-          setRoomInput(undefined);
-          setPassInput(undefined);
-          setTimeInput("");
-          setHintInput(undefined);
-          setPlayerInput(undefined);
-          setToggleTime(false);
-        })
-        .catch((error) => {
-          // keep this
-          console.log(error);
-        });
     } else {
       setErrorMessage("Please fill in time remaining");
       setToggleModal(true);
     }
+  };
+
+  const addStat = (timeRemaining) => {
+    // get date timestamp function
+    const date = calculateDate();
+    // stores user selection into an object to push into firebase
+    const roomStat = {
+      date: date,
+      name: roomInput,
+      pass: passInput,
+      time: timeRemaining,
+      hint: hintInput,
+      player: playerInput,
+    };
+
+    push(dbRef, roomStat)
+      .then(() => {
+        // set success error message
+        setErrorMessage("Successfully added new stat!");
+        setToggleModal(true);
+
+        // clears all states/unchecked radio buttons
+        setRoomInput(undefined);
+        setPassInput(undefined);
+        setTimeInput("");
+        setHintInput(undefined);
+        setPlayerInput(undefined);
+        setToggleTime(false);
+      })
+      .catch((error) => {
+        // keep this
+        console.log(error);
+      });
   };
 
   const closeModal = () => {
@@ -215,7 +231,7 @@ const AddStats = () => {
                     name="time-input"
                     placeholder="12:43 or 1243"
                     onChange={(e) => {
-                      setTimeInput(e.target.value);
+                      handleTime(e);
                     }}
                     value={timeInput}
                     maxLength="5"
