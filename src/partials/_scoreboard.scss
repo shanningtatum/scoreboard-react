@@ -1,0 +1,26 @@
+.scoreboard-section{
+    border:2px red solid;
+
+    .wrapper{
+        width:100%;
+    }
+
+    .scoreboard-container{
+        border:2px red solid;
+    }
+
+    ul{
+        display:flex;
+        flex-direction:row;
+        padding:0;
+        list-style:none;
+    }
+
+    li{
+        width:calc(100%/5);
+    }
+
+    img{
+        width:100%;
+    }
+}

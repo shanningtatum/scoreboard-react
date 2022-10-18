@@ -673,6 +673,28 @@ header.darkTheme a {
   display: flex;
 }
 
+.scoreboard-section {
+  border: 2px red solid;
+}
+.scoreboard-section .wrapper {
+  width: 100%;
+}
+.scoreboard-section .scoreboard-container {
+  border: 2px red solid;
+}
+.scoreboard-section ul {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  list-style: none;
+}
+.scoreboard-section li {
+  width: 20%;
+}
+.scoreboard-section img {
+  width: 100%;
+}
+
 .error-page {
   display: flex;
   justify-content: center;

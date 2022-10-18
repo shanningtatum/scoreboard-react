@@ -1,11 +1,28 @@
 // doing this so it will be easier to change things in the future
+import imgOne from "../assets/room-1.jpg";
+import imgTwo from "../assets/room-2.jpg";
+import imgThree from "../assets/room-3.jpg";
+import imgFour from "../assets/room-4.jpg";
+import imgFive from "../assets/room-5.jpg";
 
 export const roomNames = [
-  "The Elevator",
-  "Kate's Motel",
-  "True Spies",
-  "The Last Laugh",
-  "The Short Cut",
+  {
+    name: "The Elevator",
+    imgUrl: imgOne,
+  },
+  { name: "Kate's Motel", imgUrl: imgTwo },
+  {
+    name: "True Spies",
+    imgUrl: imgFive,
+  },
+  {
+    name: "The Last Laugh",
+    imgUrl: imgThree,
+  },
+  {
+    name: "The Short Cut",
+    imgUrl: imgFour,
+  },
 ];
 
 // export const maxPlayers = 8;

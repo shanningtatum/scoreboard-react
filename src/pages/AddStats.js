@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   roomNames,
@@ -13,6 +13,7 @@ import { getDatabase, ref, push } from "firebase/database";
 const AddStats = () => {
   // declaring variable from AuthContext
   const { user } = UserAuth();
+
   // declaring variable from DarkModeContext
   const { darkMode } = useContext(DarkModeContext);
   const [toggleTime, setToggleTime] = useState(false);
@@ -28,8 +29,6 @@ const AddStats = () => {
   // state for error messages
   const [errorMessage, setErrorMessage] = useState("");
   const [toggleModal, setToggleModal] = useState(false);
-  // state to store user input to push to database
-  const [roomStatInfo, setRoomStatInfo] = useState({});
 
   // declaring database stuff for Firebase
   const database = getDatabase(firebase);
@@ -82,19 +81,24 @@ const AddStats = () => {
       hintInput &&
       playerInput
     ) {
+      // -- calculates the remaining time for a successful escape
       const remainingTime = await calculateTime(roomInput, timeInput);
 
       if (
-        remainingTime == "Invalid Entry: Minutes" ||
-        remainingTime == "Invalid Entry: Seconds"
+        remainingTime === "Invalid Entry: Minutes" ||
+        remainingTime === "Invalid Entry: Seconds"
       ) {
-        console.log(remainingTime);
+        // -- ERROR HANDLING: If user input returns more than 60s or maximum minutes of a room, display error
         setErrorMessage(remainingTime);
         setToggleModal(true);
-      } else {
-        console.log(remainingTime);
+      } else if (timeInput !== "N/A") {
+        // -- if time input is not equal to N/A aka false then run this
         setTimeRemain(remainingTime);
         addStat(remainingTime);
+      } else {
+        // -- all other cases, use timeInput aka N/A
+        setTimeRemain(timeInput);
+        addStat(timeInput);
       }
     } else {
       setErrorMessage("Please fill in time remaining");
@@ -115,6 +119,7 @@ const AddStats = () => {
       player: playerInput,
     };
 
+    // -- Pushing object to database
     push(dbRef, roomStat)
       .then(() => {
         // set success error message
@@ -172,7 +177,6 @@ const AddStats = () => {
           ) : (
             <>
               <h2>Add Stats</h2>
-
               <form>
                 <fieldset id="room-input">
                   <legend>Room Name</legend>
@@ -182,12 +186,12 @@ const AddStats = () => {
                         <input
                           type="radio"
                           name="room-input"
-                          checked={roomInput === room}
-                          value={room}
-                          id={room}
+                          checked={roomInput === room.name}
+                          value={room.name}
+                          id={room.name}
                           onChange={handleRoom}
                         />
-                        <label htmlFor={room}>{room}</label>
+                        <label htmlFor={room.name}>{room.name}</label>
                       </div>
                     );
                   })}
