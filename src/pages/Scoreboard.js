@@ -10,18 +10,17 @@ const Scoreboard = () => {
   return (
     <section id="scoreboard" className="scoreboard-section">
       <div className="wrapper">
-        <h2>Scoreboard</h2>
         <div className="scoreboard-container">
           <ul>
             {roomNames.map((room) => {
               const { name, imgUrl } = room;
               return (
                 <li>
-                  <div className="room-img-container">
-                    <img src={imgUrl} alt={`Poster for ${name}`} />
-                  </div>
+                  <img src={imgUrl} alt={`Poster for ${name}`} />
+
+                  {/* <div className="room-img-container"></div> */}
                   <div className="room-text-container">
-                    {/* <h3>{name}</h3> */}
+                    <h3>{name}</h3>
                     <div className="best-time-container">
                       <h4>Best Time</h4>
                       <p>May 26th, 2022</p>
