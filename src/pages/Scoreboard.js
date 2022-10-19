@@ -21,8 +21,13 @@ const Scoreboard = () => {
                     <img src={imgUrl} alt={`Poster for ${name}`} />
                   </div>
                   <div className="room-text-container">
-                    <h3>{name}</h3>
-                    <h4></h4>
+                    {/* <h3>{name}</h3> */}
+                    <div className="best-time-container">
+                      <h4>Best Time</h4>
+                      <p>May 26th, 2022</p>
+                      <p>45:12</p>
+                      <p>0 hints</p>
+                    </div>
                   </div>
                 </li>
               );

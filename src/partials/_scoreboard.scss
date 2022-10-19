@@ -1,12 +1,13 @@
 .scoreboard-section{
     border:2px red solid;
+    color:$white;
 
     .wrapper{
         width:100%;
+        max-width:none;
     }
-
     .scoreboard-container{
-        border:2px red solid;
+        border:2px orange solid;
     }
 
     ul{
@@ -15,12 +16,55 @@
         padding:0;
         list-style:none;
     }
-
     li{
         width:calc(100%/5);
+        display:flex;
+        flex-direction:column;
     }
-
     img{
         width:100%;
     }
+    .room-img-container{
+        display:flex;
+        justify-content:flex-end;
+    }
+
+    .room-text-container{
+        background-color:$black;
+        padding-top:10px;
+        height:max-content;
+        border-top-left-radius:20px;
+        border-top-right-radius:20px;
+
+    }
+    h3{
+        font-family:$bebas;
+        text-align: center;
+    }
+    h4{
+        font-family:$source;
+        text-align: center;
+        border:2px $red solid;
+        border-radius:20px;
+        text-transform:uppercase;
+        width:90%;
+        padding:5px 0;
+        margin:0 auto;
+    }
+    p:nth-child(2){
+        margin-bottom:0;
+    }
+    p:nth-child(3){
+        margin:0;
+    }
+    p:nth-child(4){
+        margin-top:0;
+    }
+    .best-time-container{
+        text-align: center;
+    }
+
+
 }
+
+// DARK THEME
