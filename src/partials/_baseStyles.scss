@@ -5,7 +5,7 @@
 }
 
 header{
-    background-color:rgba($nickel, $alpha:0.7);
+    background-color:#909793;
 }
 
 main{
@@ -15,15 +15,15 @@ main{
 }
 
 .main-content.darkTheme{
-    background-color:rgba(black, $alpha:0.75);
-    color:white;
+
+    .scoreboard-container{
+        color:white;
+        background-color:rgba($black, $alpha:0.7);
+
+        .stats-col{
+        background-color:rgba($nickel, $alpha:0.7);
+        }
+    }
 }
 
-.main-content {
-    background-color:rgba($grey, $alpha:0.3);
-}
-
-section{
-    height:100vh;
-}
 

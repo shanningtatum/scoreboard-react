@@ -4,7 +4,8 @@ header{
     width:15%;
     position: fixed;
     font-family:$source;
-    border-right:2px $black solid;    
+    border-right:2px $black solid;   
+    z-index:10; 
 
     .wrapper{
         display:flex;

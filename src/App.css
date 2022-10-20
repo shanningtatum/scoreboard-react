@@ -229,7 +229,7 @@ html {
 }
 
 header {
-  background-color: rgba(98, 108, 102, 0.7);
+  background-color: #909793;
 }
 
 main {
@@ -238,17 +238,12 @@ main {
   height: 100vh;
 }
 
-.main-content.darkTheme {
-  background-color: rgba(0, 0, 0, 0.75);
+.main-content.darkTheme .scoreboard-container {
   color: white;
+  background-color: rgba(0, 0, 0, 0.7);
 }
-
-.main-content {
-  background-color: rgba(129, 127, 117, 0.3);
-}
-
-section {
-  height: 100vh;
+.main-content.darkTheme .scoreboard-container .stats-col {
+  background-color: rgba(98, 108, 102, 0.7);
 }
 
 h1 {
@@ -332,6 +327,82 @@ section h2::before {
   }
   100% {
     transform: translateX(0px);
+  }
+}
+@-webkit-keyframes slideAnimate {
+  0% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(0%);
+  }
+  15% {
+    transform: translateX(-100%);
+  }
+  25% {
+    transform: translateX(-100%);
+  }
+  30% {
+    transform: translateX(-200%);
+  }
+  40% {
+    transform: translateX(-200%);
+  }
+  45% {
+    transform: translateX(-300%);
+  }
+  55% {
+    transform: translateX(-300%);
+  }
+  60% {
+    transform: translateX(-400%);
+  }
+  70% {
+    transform: translateX(-400%);
+  }
+  75% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideAnimate {
+  0% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(0%);
+  }
+  15% {
+    transform: translateX(-100%);
+  }
+  25% {
+    transform: translateX(-100%);
+  }
+  30% {
+    transform: translateX(-200%);
+  }
+  40% {
+    transform: translateX(-200%);
+  }
+  45% {
+    transform: translateX(-300%);
+  }
+  55% {
+    transform: translateX(-300%);
+  }
+  60% {
+    transform: translateX(-400%);
+  }
+  70% {
+    transform: translateX(-400%);
+  }
+  75% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 .signin-section {
@@ -447,6 +518,7 @@ header {
   position: fixed;
   font-family: "Source Sans Pro", sans-serif;
   border-right: 2px #000 solid;
+  z-index: 10;
 }
 header .wrapper {
   display: flex;
@@ -674,83 +746,85 @@ header.darkTheme a {
 }
 
 .scoreboard-section {
-  border: 2px red solid;
   color: #fff;
-}
-.scoreboard-section .wrapper {
-  width: 100%;
-  max-width: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   height: 100vh;
 }
-.scoreboard-section .scoreboard-container {
-  border: 2px orange solid;
-  height: inherit;
-}
-.scoreboard-section ul {
+.scoreboard-section .wrapper {
   display: flex;
-  flex-direction: row;
-  padding: 0;
-  list-style: none;
-  height: inherit;
   margin: 0;
+  max-width: none;
+  height: inherit;
+  width: 100%;
 }
-.scoreboard-section li {
-  width: 20%;
-  height: 100%;
+.scoreboard-section .scoreboard-div {
+  white-space: nowrap;
+  width: 100%;
+  height: 100vh;
+  border: 2px red solid;
+}
+.scoreboard-section .scoreboard-container {
+  display: flex;
+  height: inherit;
+  width: 84vw;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #000;
+}
+.scoreboard-section .room-poster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  max-height: 100vh;
+  padding: 0 20px;
+}
+.scoreboard-section .room-stats {
   display: flex;
   flex-direction: column;
-  position: relative;
-  height: 100%;
-  overflow: hidden;
+  justify-content: space-evenly;
+  width: 60%;
+  max-height: 100vh;
+}
+.scoreboard-section .stats-row {
+  display: flex;
+  justify-content: space-evenly;
+}
+.scoreboard-section .stats-col {
+  background-color: rgba(98, 108, 102, 0.3);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.scoreboard-section .passrate-row .stats-col {
+  width: calc(50% - 40px);
+  margin: 10px;
+  padding: 10px;
+}
+.scoreboard-section .best-time-row {
+  display: flex;
+  justify-content: space-evenly;
+}
+.scoreboard-section .best-time-row .stats-col {
+  width: calc(33.3333333333% - 40px);
+  margin: 10px;
+  padding: 10px;
 }
 .scoreboard-section img {
-  top: 0;
-  height: 100%;
-  position: absolute;
-  left: -50%;
-}
-.scoreboard-section .room-img-container {
-  display: flex;
-  justify-content: flex-end;
-}
-.scoreboard-section .room-text-container {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  bottom: 0;
   width: 100%;
-  height: 50vh;
-  background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 77%, rgba(255, 255, 255, 0) 100%);
-  padding-top: 10px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
 }
 .scoreboard-section h3 {
   font-family: "Bebas Neue", sans-serif;
-  text-align: center;
-}
-.scoreboard-section h4 {
-  font-family: "Source Sans Pro", sans-serif;
-  text-align: center;
-  border: 2px #d42025 solid;
-  border-radius: 20px;
-  text-transform: uppercase;
-  width: 90%;
-  padding: 5px 0;
-  margin: 0 auto;
-}
-.scoreboard-section p:nth-child(2) {
-  margin-bottom: 0;
-}
-.scoreboard-section p:nth-child(3) {
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  position: relative;
   margin: 0;
 }
-.scoreboard-section p:nth-child(4) {
-  margin-top: 0;
-}
-.scoreboard-section .best-time-container {
-  text-align: center;
+.scoreboard-section h3:before {
+  content: "";
+  position: absolute;
+  background-color: #d42025;
+  width: 50px;
+  height: 5px;
+  bottom: -8px;
 }
 
 .error-page {

@@ -24,3 +24,43 @@
         transform:translateX(0px);
     }
 }
+
+@keyframes slideAnimate {
+    // First Room
+    0%{
+        transform:translateX(0)
+    }
+    10%{
+        transform:translateX(0%);
+    }
+15%{
+    transform:translateX(-100%);
+}
+25%{
+    transform:translateX(-100%);
+}
+30%{
+    transform:translateX(-200%)
+}
+40%{
+    transform:translateX(-200%);
+}
+45%{
+    transform:translateX(-300%)
+}
+55%{
+    transform:translateX(-300%)
+}
+60%{
+    transform:translateX(-400%)
+}
+    70%{
+        transform:translateX(-400%);
+    }
+75%{
+    transform:translateX(0);
+}
+100%{
+    transform:translateX(0);
+}
+}
