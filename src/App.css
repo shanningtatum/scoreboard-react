@@ -333,7 +333,7 @@ section h2::before {
   0% {
     transform: translateX(0);
   }
-  10% {
+  12% {
     transform: translateX(0%);
   }
   15% {
@@ -342,25 +342,25 @@ section h2::before {
   25% {
     transform: translateX(-100%);
   }
-  30% {
+  28% {
     transform: translateX(-200%);
   }
-  40% {
+  38% {
     transform: translateX(-200%);
   }
-  45% {
+  41% {
     transform: translateX(-300%);
   }
-  55% {
+  51% {
     transform: translateX(-300%);
   }
-  60% {
+  54% {
     transform: translateX(-400%);
   }
-  70% {
+  64% {
     transform: translateX(-400%);
   }
-  75% {
+  67% {
     transform: translateX(0);
   }
   100% {
@@ -371,7 +371,7 @@ section h2::before {
   0% {
     transform: translateX(0);
   }
-  10% {
+  12% {
     transform: translateX(0%);
   }
   15% {
@@ -380,29 +380,51 @@ section h2::before {
   25% {
     transform: translateX(-100%);
   }
-  30% {
+  28% {
     transform: translateX(-200%);
   }
-  40% {
+  38% {
     transform: translateX(-200%);
   }
-  45% {
+  41% {
     transform: translateX(-300%);
   }
-  55% {
+  51% {
     transform: translateX(-300%);
   }
-  60% {
+  54% {
     transform: translateX(-400%);
   }
-  70% {
+  64% {
     transform: translateX(-400%);
   }
-  75% {
+  67% {
     transform: translateX(0);
   }
   100% {
     transform: translateX(0);
+  }
+}
+@-webkit-keyframes zoomIn {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes zoomIn {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 .signin-section {
@@ -747,9 +769,6 @@ header.darkTheme a {
 
 .scoreboard-section {
   color: #fff;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   height: 100vh;
 }
 .scoreboard-section .wrapper {
@@ -760,23 +779,28 @@ header.darkTheme a {
   width: 100%;
 }
 .scoreboard-section .carousel-container {
-  border: 2px salmon solid;
   overflow: hidden;
 }
 .scoreboard-section .scoreboard-div {
   display: flex;
-  width: 100%;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   height: 100vh;
-  border: 2px red solid;
 }
-.scoreboard-section .scoreboard-container {
-  display: flex;
+.scoreboard-section .carousel-slides {
+  white-space: nowrap;
   height: inherit;
   width: 84vw;
   background-color: rgba(0, 0, 0, 0.2);
   color: #000;
-  -webkit-animation: slideAnimate 20s infinite;
-          animation: slideAnimate 20s infinite;
+  -webkit-animation: slideAnimate 60s infinite;
+          animation: slideAnimate 60s infinite;
+  height: inherit;
+}
+.scoreboard-section .scoreboard-container {
+  display: flex;
+  height: inherit;
 }
 .scoreboard-section .room-poster {
   display: flex;
@@ -784,7 +808,17 @@ header.darkTheme a {
   justify-content: center;
   width: 40%;
   max-height: 100vh;
+  height: 100vh;
   padding: 0 20px;
+  margin: auto;
+  overflow: hidden;
+}
+.scoreboard-section .room-poster-container {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  width: 100%;
+  overflow: hidden;
 }
 .scoreboard-section .room-stats {
   display: flex;
@@ -800,6 +834,12 @@ header.darkTheme a {
 .scoreboard-section .stats-col {
   background-color: rgba(98, 108, 102, 0.3);
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.scoreboard-section .stats-col p {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
 }
 .scoreboard-section .passrate-row .stats-col {
   width: calc(50% - 40px);
@@ -817,6 +857,9 @@ header.darkTheme a {
 }
 .scoreboard-section img {
   width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  -webkit-animation: zoomIn 60s infinite;
+          animation: zoomIn 60s infinite;
 }
 .scoreboard-section h3 {
   font-family: "Bebas Neue", sans-serif;

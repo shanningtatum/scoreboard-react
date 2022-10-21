@@ -15,40 +15,44 @@ const Scoreboard = () => {
             {roomNames.map((room) => {
               const { name, imgUrl } = room;
               return (
-                <div className="scoreboard-container">
-                  <div className="room-poster">
-                    <img src={imgUrl} alt={`Poster for ${name} room`} />
-                  </div>
-                  <div className="room-stats">
-                    {/* Pass Rate, Recommended Players */}
-                    <div className="stats-row passrate-row">
-                      <div className="stats-col ">
-                        <h3>Pass Rate</h3>
-                        <p>45%</p>
-                      </div>
-                      <div className="stats-col">
-                        <h3>Recommended Players</h3>
-                        <p>4</p>
+                <div className="carousel-slides">
+                  <div className="scoreboard-container">
+                    <div className="room-poster">
+                      <div className="room-poster-container">
+                        <img src={imgUrl} alt={`Poster for ${name} room`} />
                       </div>
                     </div>
-                    {/* Best Time */}
-                    <div className="stats-row best-time-row">
-                      <div className="stats-col">
-                        <h3>Best Time</h3>
-                        <p>45:16</p>
+                    <div className="room-stats">
+                      {/* Pass Rate, Recommended Players */}
+                      <div className="stats-row passrate-row">
+                        <div className="stats-col ">
+                          <h3>Pass Rate</h3>
+                          <p>45%</p>
+                        </div>
+                        <div className="stats-col">
+                          <h3>Recommended Players</h3>
+                          <p>4</p>
+                        </div>
                       </div>
-                      <div className="stats-col">
-                        <h3># Of Clues</h3>
-                        <p>2</p>
+                      {/* Best Time */}
+                      <div className="stats-row best-time-row">
+                        <div className="stats-col">
+                          <h3>Best Time</h3>
+                          <p>45:16</p>
+                        </div>
+                        <div className="stats-col">
+                          <h3># Of Clues</h3>
+                          <p>2</p>
+                        </div>
+                        <div className="stats-col">
+                          <h3># Of Players</h3>
+                          <p>4</p>
+                        </div>
                       </div>
-                      <div className="stats-col">
-                        <h3># Of Players</h3>
-                        <p>4</p>
+                      {/* Graph */}
+                      <div className="stats-row graph-row">
+                        <div className="stats-graph">Graph Here</div>
                       </div>
-                    </div>
-                    {/* Graph */}
-                    <div className="stats-row graph-row">
-                      <div className="stats-graph">Graph Here</div>
                     </div>
                   </div>
                 </div>

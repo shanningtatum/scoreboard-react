@@ -30,7 +30,7 @@
     0%{
         transform:translateX(0)
     }
-    10%{
+    12%{
         transform:translateX(0%);
     }
 15%{
@@ -39,28 +39,40 @@
 25%{
     transform:translateX(-100%);
 }
-30%{
+28%{
     transform:translateX(-200%)
 }
-40%{
+38%{
     transform:translateX(-200%);
 }
-45%{
+41%{
     transform:translateX(-300%)
 }
-55%{
+51%{
     transform:translateX(-300%)
 }
-60%{
+54%{
     transform:translateX(-400%)
 }
-    70%{
+    64%{
         transform:translateX(-400%);
     }
-75%{
+67%{
     transform:translateX(0);
 }
 100%{
     transform:translateX(0);
 }
+}
+
+@keyframes zoomIn{
+    0%{
+        transform:scale(1)
+    }
+    50% {
+        transform:scale(1.5)
+    }
+    100%{
+        transform:scale(1)
+    }
 }

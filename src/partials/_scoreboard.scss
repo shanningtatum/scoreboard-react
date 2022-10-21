@@ -1,6 +1,5 @@
 .scoreboard-section{
     color:$white;
-    width:max-content;
     height:100vh;
 
     .wrapper{
@@ -13,24 +12,27 @@
     }
 
     .carousel-container{
-        border:2px salmon solid;
         overflow:hidden;
     }
     
     .scoreboard-div{
         display:flex;
-        width:100%;
+        width:max-content;
         height:100vh;
-        border:2px red solid;   
     }
 
-    .scoreboard-container{
-        display:flex;
+    .carousel-slides{
+        white-space:nowrap;
         height:inherit;     
         width:84vw; 
         background-color:rgba($black, $alpha:0.2);
         color:$black;
-        animation:slideAnimate 20s infinite;
+        animation:slideAnimate 60s infinite;
+        height:inherit;
+    }
+    .scoreboard-container{
+        display:flex;
+        height:inherit;
     }
 
     .room-poster{
@@ -39,7 +41,16 @@
         justify-content: center;
         width:40%;
         max-height:100vh;
+        height:100vh;
         padding:0 20px;
+        margin:auto;
+        overflow:hidden;
+
+    }
+    .room-poster-container{
+        height:max-content;
+        width:100%;
+        overflow:hidden;
     }
     .room-stats{
         display:flex;
@@ -56,6 +67,13 @@
     .stats-col{
         background-color:rgba($nickel, $alpha:0.3);
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+        p{
+            font-size:2.5rem;
+            font-weight:bold;
+            text-align: center;
+            margin:20px 0;
+        }
     }
     .passrate-row{
         .stats-col{
@@ -78,6 +96,8 @@
 
     img{
         width:100%;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        animation:zoomIn 60s infinite;
     }
 
     h3{
