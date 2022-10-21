@@ -361,6 +361,12 @@ section h2::before {
     transform: translateX(-400%);
   }
   67% {
+    transform: translateX(-500%);
+  }
+  77% {
+    transform: translateX(-500%);
+  }
+  80% {
     transform: translateX(0);
   }
   100% {
@@ -399,6 +405,12 @@ section h2::before {
     transform: translateX(-400%);
   }
   67% {
+    transform: translateX(-500%);
+  }
+  77% {
+    transform: translateX(-500%);
+  }
+  80% {
     transform: translateX(0);
   }
   100% {
@@ -424,6 +436,90 @@ section h2::before {
     transform: scale(1.5);
   }
   100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes slideDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes slideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes appearIn {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+@keyframes appearIn {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(2);
+  }
+  100% {
+    opacity: 0;
     transform: scale(1);
   }
 }
@@ -794,8 +890,8 @@ header.darkTheme a {
   width: 84vw;
   background-color: rgba(0, 0, 0, 0.2);
   color: #000;
-  -webkit-animation: slideAnimate 60s infinite;
-          animation: slideAnimate 60s infinite;
+  -webkit-animation: slideAnimate 100s infinite;
+          animation: slideAnimate 100s infinite;
   height: inherit;
 }
 .scoreboard-section .scoreboard-container {
@@ -874,6 +970,65 @@ header.darkTheme a {
   width: 50px;
   height: 5px;
   bottom: -8px;
+}
+.scoreboard-section .first-slide {
+  width: 84vw;
+  height: 100%;
+}
+.scoreboard-section .first-slide ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+.scoreboard-section .first-slide li {
+  width: 20%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.scoreboard-section .first-slide li:nth-child(1) img {
+  -webkit-animation: slideUp 20s infinite 5s;
+          animation: slideUp 20s infinite 5s;
+}
+.scoreboard-section .first-slide li:nth-child(2) img {
+  -webkit-animation: slideDown 20s infinite 5s;
+          animation: slideDown 20s infinite 5s;
+}
+.scoreboard-section .first-slide li:nth-child(3) img {
+  -webkit-animation: slideUp 20s infinite 5s;
+          animation: slideUp 20s infinite 5s;
+}
+.scoreboard-section .first-slide li:nth-child(4) img {
+  -webkit-animation: slideDown 20s infinite 5s;
+          animation: slideDown 20s infinite 5s;
+}
+.scoreboard-section .first-slide li:nth-child(5) img {
+  -webkit-animation: slideUp 20s infinite 5s;
+          animation: slideUp 20s infinite 5s;
+}
+.scoreboard-section .first-slide img {
+  top: 0;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+}
+.scoreboard-section .first-slide p {
+  top: 40%;
+  left: 40%;
+  position: absolute;
+  text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  opacity: 0;
+  -webkit-animation: appearIn 10s infinite 10s;
+          animation: appearIn 10s infinite 10s;
 }
 
 .error-page {

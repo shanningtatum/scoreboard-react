@@ -12,6 +12,23 @@ const Scoreboard = () => {
       <div className="wrapper">
         <div className="carousel-container">
           <div className="scoreboard-div">
+            <div className="carousel-slides first-slide">
+              <p>Get Your Locks Off</p>
+              <ul>
+                {roomNames.map((room) => {
+                  const { name, imgUrl } = room;
+                  return (
+                    <li>
+                      <img
+                        src={imgUrl}
+                        alt={`Poster for ${name} room`}
+                        draggable={false}
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
             {roomNames.map((room) => {
               const { name, imgUrl } = room;
               return (
@@ -19,7 +36,11 @@ const Scoreboard = () => {
                   <div className="scoreboard-container">
                     <div className="room-poster">
                       <div className="room-poster-container">
-                        <img src={imgUrl} alt={`Poster for ${name} room`} />
+                        <img
+                          src={imgUrl}
+                          alt={`Poster for ${name} room`}
+                          draggable={false}
+                        />
                       </div>
                     </div>
                     <div className="room-stats">

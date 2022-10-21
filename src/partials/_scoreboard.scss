@@ -27,7 +27,7 @@
         width:84vw; 
         background-color:rgba($black, $alpha:0.2);
         color:$black;
-        animation:slideAnimate 60s infinite;
+        animation:slideAnimate 100s infinite;
         height:inherit;
     }
     .scoreboard-container{
@@ -116,27 +116,76 @@
         }
     }
 
-    // .room-img-container{
-    //     display:flex;
-    //     justify-content:flex-end;
-    // }
+    .first-slide{
+        width:84vw; 
+        height:100%;
 
-    // .room-text-container{
-    //     // display:none;
-    //     position: absolute;
-    //     display:flex;
-    //     flex-direction:column;
-    //     justify-content:center;
-    //     bottom:0;
-    //     width:100%;
-    //     height:50vh;
-    //     background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 77%, rgba(255,255,255,0) 100%); 
-    //     padding-top:10px;
-    //     border-top-left-radius:20px;
-    //     border-top-right-radius:20px;
+        ul{
+            display:flex;
+            list-style:none;
+            padding:0;
+            margin:0;
+            height:100%;
+        }
 
-    // }
+        li{
+            width:calc(100% / 5);
+            height:100%;
+            position: relative;
+            overflow:hidden;
+            display:flex;
+            align-items: center;
+            justify-content: center;
 
+            &:nth-child(1){
+                img{
+                    animation:slideUp 20s infinite 5s;
+                    
+                }
+            }
+            &:nth-child(2){
+                img{
+                    animation:slideDown 20s infinite 5s;
+                    
+                }
+            }
+            &:nth-child(3){
+                img{
+                    animation:slideUp 20s infinite 5s;
+                    
+                }
+            }
+            &:nth-child(4){
+                img{
+                    animation:slideDown 20s infinite 5s;
+                    
+                }
+            }
+            &:nth-child(5){
+                img{
+                    animation:slideUp 20s infinite 5s;
+                    
+                }
+            }
+        }
+        img{
+            top:0;
+            height:100%;
+            width:100%;
+            object-fit:cover;
+            position: absolute;
+        }
+        p{
+            top:40%;
+            left:40%;   
+            position: absolute;
+            text-align: center;
+            font-family:$bebas;
+            font-size:clamp(2rem, 4vw, 2.5rem);
+            opacity:0;
+            animation:appearIn 10s infinite 10s;
+        }
+    }
 }
 
 // DARK THEME
