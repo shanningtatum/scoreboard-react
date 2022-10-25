@@ -25,12 +25,6 @@ export const roomNames = [
   },
 ];
 
-// export const maxPlayers = 8;
-// export const minPlayers = 2;
-
-// export const maxHints = 3;
-// export const minHints = 0;
-
 export const months = [
   "Jan",
   "Feb",

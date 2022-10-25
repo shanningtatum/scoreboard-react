@@ -27,7 +27,7 @@
         width:84vw; 
         background-color:rgba($black, $alpha:0.2);
         color:$black;
-        animation:slideAnimate 100s infinite; 
+        // animation:slideAnimate 100s infinite; 
         height:inherit;
     }
     .scoreboard-container{
@@ -121,6 +121,14 @@
         height:100%;
         background-color:$black;
 
+        img{
+            top:0;
+            height:100%;
+            width:100%;
+            object-fit:cover;
+            position: absolute;
+        }
+
         ul{
             display:flex;
             list-style:none;
@@ -140,37 +148,32 @@
 
             &:nth-child(1){
                 img{
-                    animation:zoomIn 20s infinite, slideDown 20s infinite 10s;
+                    transform:translateY(-100%);
+                    animation:slideDown 10s infinite ease-in-out;
                 }
             }
-            &:nth-child(2){
-                img{
-                    animation:zoomIn 20s infinite 1s, slideUp 20s infinite 10s;
-                }
-            }
+            // &:nth-child(2){
+            //     img{
+            //         animation:zoomIn 20s infinite 1s, slideUp 20s infinite 10s;
+            //     }
+            // }
             &:nth-child(3){
                 img{
-                    animation:zoomIn 20s infinite, slideDown 20s infinite 10s;
+                    animation:slideDown 20s infinite 10s;
                 }
             }
-            &:nth-child(4){
-                img{
-                    animation:zoomIn 20s infinite 1s, slideUp 20s infinite 10s;
-                }
-            }
+            // &:nth-child(4){
+            //     img{
+            //         animation:zoomIn 20s infinite 1s, slideUp 20s infinite 10s;
+            //     }
+            // }
             &:nth-child(5){
                 img{
-                    animation:zoomIn 20s infinite, slideDown 20s infinite 10s;      
+                    animation:slideDown 20s infinite 10s;      
                 }
             }
         }
-        img{
-            top:0;
-            height:100%;
-            width:100%;
-            object-fit:cover;
-            position: absolute;
-        }
+
         p{
             top:40%;
             left:40%;   

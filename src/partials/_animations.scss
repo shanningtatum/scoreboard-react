@@ -1,3 +1,5 @@
+
+//-- FOR INVALID ERROR MESSAGES
 @keyframes shake{
     0%{
         transform:translateX(0px)
@@ -25,6 +27,7 @@
     }
 }
 
+// -- FOR CAROUSEL SLIDING ANIMATION
 @keyframes slideAnimate {
     // First Room
     0%{
@@ -71,6 +74,7 @@
 }
 }
 
+// -- FOR CAROUSEL IMAGES
 @keyframes zoomIn{
     0%{
         transform:scale(1)
@@ -85,41 +89,36 @@
 
 @keyframes slideDown{
     0%{
-        opacity:1;
-        transform:translateY(0);
-    }
-    80%{
-        opacity:1;
-        transform:translateY(0);
-    }
-    85%{
-        opacity:0;
         transform:translateY(-100%);
     }
-   100%{
-        opacity:1;
+    25%{
         transform:translateY(0);
-
+    }
+    50%{
+        transform:translateY(0);
+    }
+    100%{
+        transform:translateY(-100%);
     }
 }
 
 @keyframes slideUp{
     0%{
         opacity:1;
-        transform:translateY(0);
+        transform:translateY(100%);
 
     }
     80%{
         opacity:1;
-        transform:translateY(100%);
+        transform:translateY(0);
     }
     85%{
         opacity:0;
-        transform:translateY(100%);
+        transform:translateY(0);
     }
     100%{
         opacity:1;
-        transform:translateY(0);
+        transform:translateY(100%);
     }
 }
 

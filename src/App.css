@@ -422,7 +422,7 @@ section h2::before {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.5);
+    transform: scale(1.2);
   }
   100% {
     transform: scale(1);
@@ -433,7 +433,7 @@ section h2::before {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.5);
+    transform: scale(1.2);
   }
   100% {
     transform: scale(1);
@@ -441,58 +441,66 @@ section h2::before {
 }
 @-webkit-keyframes slideDown {
   0% {
-    opacity: 1;
+    transform: translateY(-100%);
+  }
+  25% {
     transform: translateY(0);
   }
   50% {
-    opacity: 0;
-    transform: translateY(-100%);
+    transform: translateY(0);
   }
   100% {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateY(-100%);
   }
 }
 @keyframes slideDown {
   0% {
-    opacity: 1;
+    transform: translateY(-100%);
+  }
+  25% {
     transform: translateY(0);
   }
   50% {
-    opacity: 0;
-    transform: translateY(-100%);
+    transform: translateY(0);
   }
   100% {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateY(-100%);
   }
 }
 @-webkit-keyframes slideUp {
   0% {
     opacity: 1;
+    transform: translateY(100%);
+  }
+  80% {
+    opacity: 1;
     transform: translateY(0);
   }
-  50% {
+  85% {
     opacity: 0;
-    transform: translateY(100%);
+    transform: translateY(0);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(100%);
   }
 }
 @keyframes slideUp {
   0% {
     opacity: 1;
+    transform: translateY(100%);
+  }
+  80% {
+    opacity: 1;
     transform: translateY(0);
   }
-  50% {
+  85% {
     opacity: 0;
-    transform: translateY(100%);
+    transform: translateY(0);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(100%);
   }
 }
 @-webkit-keyframes appearIn {
@@ -890,8 +898,6 @@ header.darkTheme a {
   width: 84vw;
   background-color: rgba(0, 0, 0, 0.2);
   color: #000;
-  -webkit-animation: slideAnimate 100s infinite;
-          animation: slideAnimate 100s infinite;
   height: inherit;
 }
 .scoreboard-section .scoreboard-container {
@@ -974,6 +980,15 @@ header.darkTheme a {
 .scoreboard-section .first-slide {
   width: 84vw;
   height: 100%;
+  background-color: #000;
+}
+.scoreboard-section .first-slide img {
+  top: 0;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
 }
 .scoreboard-section .first-slide ul {
   display: flex;
@@ -992,32 +1007,17 @@ header.darkTheme a {
   justify-content: center;
 }
 .scoreboard-section .first-slide li:nth-child(1) img {
-  -webkit-animation: slideUp 20s infinite 5s;
-          animation: slideUp 20s infinite 5s;
-}
-.scoreboard-section .first-slide li:nth-child(2) img {
-  -webkit-animation: slideDown 20s infinite 5s;
-          animation: slideDown 20s infinite 5s;
+  transform: translateY(-100%);
+  -webkit-animation: slideDown 10s infinite ease-in-out;
+          animation: slideDown 10s infinite ease-in-out;
 }
 .scoreboard-section .first-slide li:nth-child(3) img {
-  -webkit-animation: slideUp 20s infinite 5s;
-          animation: slideUp 20s infinite 5s;
-}
-.scoreboard-section .first-slide li:nth-child(4) img {
-  -webkit-animation: slideDown 20s infinite 5s;
-          animation: slideDown 20s infinite 5s;
+  -webkit-animation: slideDown 20s infinite 10s;
+          animation: slideDown 20s infinite 10s;
 }
 .scoreboard-section .first-slide li:nth-child(5) img {
-  -webkit-animation: slideUp 20s infinite 5s;
-          animation: slideUp 20s infinite 5s;
-}
-.scoreboard-section .first-slide img {
-  top: 0;
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  position: absolute;
+  -webkit-animation: slideDown 20s infinite 10s;
+          animation: slideDown 20s infinite 10s;
 }
 .scoreboard-section .first-slide p {
   top: 40%;
@@ -1027,6 +1027,7 @@ header.darkTheme a {
   font-family: "Bebas Neue", sans-serif;
   font-size: clamp(2rem, 4vw, 2.5rem);
   opacity: 0;
+  color: #fff;
   -webkit-animation: appearIn 10s infinite 10s;
           animation: appearIn 10s infinite 10s;
 }
