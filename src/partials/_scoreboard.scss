@@ -27,7 +27,7 @@
         width:84vw; 
         background-color:rgba($black, $alpha:0.2);
         color:$black;
-        animation:slideAnimate 100s infinite;
+        animation:slideAnimate 100s infinite; 
         height:inherit;
     }
     .scoreboard-container{
@@ -119,6 +119,7 @@
     .first-slide{
         width:84vw; 
         height:100%;
+        background-color:$black;
 
         ul{
             display:flex;
@@ -139,32 +140,27 @@
 
             &:nth-child(1){
                 img{
-                    animation:slideUp 20s infinite 5s;
-                    
+                    animation:zoomIn 20s infinite, slideDown 20s infinite 10s;
                 }
             }
             &:nth-child(2){
                 img{
-                    animation:slideDown 20s infinite 5s;
-                    
+                    animation:zoomIn 20s infinite 1s, slideUp 20s infinite 10s;
                 }
             }
             &:nth-child(3){
                 img{
-                    animation:slideUp 20s infinite 5s;
-                    
+                    animation:zoomIn 20s infinite, slideDown 20s infinite 10s;
                 }
             }
             &:nth-child(4){
                 img{
-                    animation:slideDown 20s infinite 5s;
-                    
+                    animation:zoomIn 20s infinite 1s, slideUp 20s infinite 10s;
                 }
             }
             &:nth-child(5){
                 img{
-                    animation:slideUp 20s infinite 5s;
-                    
+                    animation:zoomIn 20s infinite, slideDown 20s infinite 10s;      
                 }
             }
         }
@@ -183,6 +179,7 @@
             font-family:$bebas;
             font-size:clamp(2rem, 4vw, 2.5rem);
             opacity:0;
+            color:$white;
             animation:appearIn 10s infinite 10s;
         }
     }
