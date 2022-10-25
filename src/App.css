@@ -898,6 +898,8 @@ header.darkTheme a {
   width: 84vw;
   background-color: rgba(0, 0, 0, 0.2);
   color: #000;
+  -webkit-animation: slideAnimate 100s infinite;
+          animation: slideAnimate 100s infinite;
   height: inherit;
 }
 .scoreboard-section .scoreboard-container {
