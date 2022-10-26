@@ -537,6 +537,7 @@ section h2::before {
   align-items: center;
   font-family: "Source Sans Pro", sans-serif;
   color: #fff;
+  height: 100vh;
 }
 .signin-section .wrapper {
   background-color: #d42025;

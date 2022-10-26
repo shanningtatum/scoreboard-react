@@ -1,5 +1,5 @@
 import { UserAuth } from "../contexts/AuthContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate, NavLink, Outlet, Link } from "react-router-dom";
 import { DarkModeContext } from "../contexts/DarkModeContext";
 

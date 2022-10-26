@@ -1,6 +1,7 @@
 import "../App.scss";
 import Homepage from "./Homepage";
 import SignIn from "../pages/SignIn";
+import { useEffect } from "react";
 import { Routes, Route, Outlet } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Error from "./Error";
@@ -13,6 +14,7 @@ import { DarkModeProvider } from "../contexts/DarkModeContext";
 
 function App() {
   const { user } = UserAuth();
+
   return (
     <div className="App">
       <DarkModeProvider>

@@ -6,13 +6,11 @@ import imgFour from "../assets/room-4.jpg";
 import imgFive from "../assets/room-5.jpg";
 
 // import firebase things
-import firebase from "../firebase";
-import { get, getDatabase, ref } from "firebase/database";
 
 // get best time
 export const getBestTime = (array) => {
+  console.log("get best time");
   const bestTime = [];
-
   // loops through array of passed rooms to breakdown the time into a number and puts in bestTime array
   for (let i = 0; i < array.length; i++) {
     bestTime.push({
@@ -31,106 +29,19 @@ export const getBestTime = (array) => {
 
   // loops through the array to find the index that has the best time in it and returns the object into bestDate variable
   const bestDate = array.find((element) => element.time === rejoinTime);
-};
 
-// get passrates
-export const getRoomStats = () => {
-  const database = getDatabase(firebase);
-  const dbRef = ref(database);
-
-  get(dbRef).then((response) => {
-    if (response.exists) {
-      const data = response.val();
-
-      const tempArray = [];
-
-      for (let key in data) {
-        // splits the date string so we can get the year from it
-        const stringDate = data[key].date.split(" ");
-
-        // will only push data from the selected year into tempArray
-        if (stringDate[2] == "2022") {
-          tempArray.push(data[key]);
-        }
-      }
-
-      // First Room Total
-      // -- The Elevator
-      const elevatorTotal = tempArray.filter(
-        (stat) => stat.name === "The Elevator"
-      );
-      // First Room Pass
-      const elevatorPass = elevatorTotal.filter((stat) => stat.pass === "true");
-      // FIRST ROOM PASSRATE
-      const roomOnePassrate =
-        (elevatorPass.length / elevatorTotal.length) * 100;
-      // creates passrate property in the roomNames array object
-      roomNames[0].passrate = roomOnePassrate.toFixed(2);
-      getBestTime(elevatorPass);
-
-      // Second Room Total
-      // -- Kate's Motel
-      const katesTotal = tempArray.filter(
-        (stat) => stat.name === "Kate's Motel"
-      );
-      // Second Room Pass
-      const katesPass = katesTotal.filter((stat) => stat.pass === "true");
-      // SECOND ROOM PASSRATE
-      const roomTwoPassrate = (katesPass.length / katesTotal.length) * 100;
-      // creates passrate property in the roomNames array object
-      roomNames[1].passrate = roomTwoPassrate.toFixed(2);
-      getBestTime(katesPass);
-
-      // Third Room Total
-      // -- True Spies
-      const trueSpiesTotal = tempArray.filter(
-        (stat) => stat.name === "True Spies"
-      );
-      // Third Room Pass
-      const trueSpiesPass = trueSpiesTotal.filter(
-        (stat) => stat.pass === "true"
-      );
-      // THIRD ROOM PASSRATE
-      const roomThreePassrate =
-        (trueSpiesPass.length / trueSpiesTotal.length) * 100;
-      // creates passrate property in the roomNames array object
-      roomNames[2].passrate = roomThreePassrate.toFixed(2);
-      getBestTime(trueSpiesPass);
-
-      // 4th Room Total
-      // -- The Last Laugh
-      const lastLaughTotal = tempArray.filter(
-        (stat) => stat.name === "The Last Laugh"
-      );
-      // 4th Room Pass
-      const lastLaughPass = lastLaughTotal.filter(
-        (stat) => stat.pass === "true"
-      );
-      // 4TH ROOM PASSRATE
-      const roomFourPassrate =
-        (lastLaughPass.length / lastLaughTotal.length) * 100;
-      // creates passrate property in the roomNames array object
-      roomNames[3].passrate = roomFourPassrate.toFixed(2);
-      getBestTime(lastLaughPass);
-
-      // Fifth Room Total
-      // -- The Short Cut
-      const shortCutTotal = tempArray.filter(
-        (stat) => stat.name === "The Short Cut"
-      );
-      // Fifth Room Pass
-      const shortCutPass = shortCutTotal.filter((stat) => stat.pass === "true");
-      // FIFTH ROOM PASSRATE
-      const roomFivePassrate =
-        (shortCutPass.length / shortCutTotal.length) * 100;
-      // creates passrate property in the roomNames array object
-      roomNames[4].passrate = roomFivePassrate.toFixed(2);
-      getBestTime(shortCutPass);
-    } else {
-      alert("something is wrong");
-    }
-    return "poop";
-  });
+  if (bestDate.name === "The Elevator") {
+    roomNames[0].bestDate = bestDate;
+  } else if (bestDate.name === "Kate's Motel") {
+    roomNames[1].bestDate = bestDate;
+  } else if (bestDate.name === "True Spies") {
+    roomNames[2].bestDate = bestDate;
+  } else if (bestDate.name === "The Last Laugh") {
+    roomNames[3].bestDate = bestDate;
+  } else if (bestDate.name === "The Short Cut") {
+    roomNames[4].bestDate = bestDate;
+  }
+  // need to store the best date in their respective room objects
 };
 
 export const months = [

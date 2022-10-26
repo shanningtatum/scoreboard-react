@@ -9,8 +9,7 @@ const RecentStats = () => {
 
   useEffect(() => {
     get(dbRef).then((response) => {
-      console.log(response.data);
-
+      // console.log(response.data);
       // get data from database and save into a state to render into the page
     });
   }, []);
