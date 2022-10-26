@@ -1,15 +1,15 @@
 import React, { useContext, useState } from "react";
-import { onValue } from "firebase/database";
 import { Link } from "react-router-dom";
 import {
   roomNames,
   calculateDate,
   calculateTime,
+  getRoomStats,
 } from "../components/roomNames";
 import { DarkModeContext } from "../contexts/DarkModeContext";
 import { UserAuth } from "../contexts/AuthContext";
 import firebase from "../firebase";
-import { getDatabase, ref, push } from "firebase/database";
+import { getDatabase, ref, push, onValue } from "firebase/database";
 
 const AddStats = () => {
   // declaring variable from AuthContext
@@ -96,10 +96,16 @@ const AddStats = () => {
         // -- if time input is not equal to N/A aka false then run this
         setTimeRemain(remainingTime);
         addStat(remainingTime);
+        onValue(dbRef, (data) => {
+          getRoomStats();
+        });
       } else {
         // -- all other cases, use timeInput aka N/A
         setTimeRemain(timeInput);
         addStat(timeInput);
+        onValue(dbRef, (data) => {
+          getRoomStats();
+        });
       }
     } else {
       setErrorMessage("Please fill in time remaining");

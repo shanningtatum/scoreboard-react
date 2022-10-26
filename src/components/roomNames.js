@@ -9,6 +9,31 @@ import imgFive from "../assets/room-5.jpg";
 import firebase from "../firebase";
 import { get, getDatabase, ref } from "firebase/database";
 
+// get best time
+export const getBestTime = (array) => {
+  const bestTime = [];
+
+  // loops through array of passed rooms to breakdown the time into a number and puts in bestTime array
+  for (let i = 0; i < array.length; i++) {
+    bestTime.push({
+      time: parseInt(array[i].time.replace(":", "")),
+      date: array[i].date,
+    });
+  }
+  // finds the fastest time
+
+  const fastestTime = Math.min(...bestTime.map((item) => item.time));
+
+  const rejoinTime = [
+    fastestTime.toString().slice(0, 2),
+    fastestTime.toString().slice(-2),
+  ].join(":");
+
+  // loops through the array to find the index that has the best time in it and returns the object into bestDate variable
+  const bestDate = array.find((element) => element.time === rejoinTime);
+};
+
+// get passrates
 export const getRoomStats = () => {
   const database = getDatabase(firebase);
   const dbRef = ref(database);
@@ -20,7 +45,13 @@ export const getRoomStats = () => {
       const tempArray = [];
 
       for (let key in data) {
-        tempArray.push(data[key]);
+        // splits the date string so we can get the year from it
+        const stringDate = data[key].date.split(" ");
+
+        // will only push data from the selected year into tempArray
+        if (stringDate[2] == "2022") {
+          tempArray.push(data[key]);
+        }
       }
 
       // First Room Total
@@ -35,6 +66,7 @@ export const getRoomStats = () => {
         (elevatorPass.length / elevatorTotal.length) * 100;
       // creates passrate property in the roomNames array object
       roomNames[0].passrate = roomOnePassrate.toFixed(2);
+      getBestTime(elevatorPass);
 
       // Second Room Total
       // -- Kate's Motel
@@ -47,6 +79,7 @@ export const getRoomStats = () => {
       const roomTwoPassrate = (katesPass.length / katesTotal.length) * 100;
       // creates passrate property in the roomNames array object
       roomNames[1].passrate = roomTwoPassrate.toFixed(2);
+      getBestTime(katesPass);
 
       // Third Room Total
       // -- True Spies
@@ -62,6 +95,7 @@ export const getRoomStats = () => {
         (trueSpiesPass.length / trueSpiesTotal.length) * 100;
       // creates passrate property in the roomNames array object
       roomNames[2].passrate = roomThreePassrate.toFixed(2);
+      getBestTime(trueSpiesPass);
 
       // 4th Room Total
       // -- The Last Laugh
@@ -77,6 +111,7 @@ export const getRoomStats = () => {
         (lastLaughPass.length / lastLaughTotal.length) * 100;
       // creates passrate property in the roomNames array object
       roomNames[3].passrate = roomFourPassrate.toFixed(2);
+      getBestTime(lastLaughPass);
 
       // Fifth Room Total
       // -- The Short Cut
@@ -90,33 +125,13 @@ export const getRoomStats = () => {
         (shortCutPass.length / shortCutTotal.length) * 100;
       // creates passrate property in the roomNames array object
       roomNames[4].passrate = roomFivePassrate.toFixed(2);
+      getBestTime(shortCutPass);
     } else {
       alert("something is wrong");
     }
+    return "poop";
   });
 };
-
-export const roomNames = [
-  {
-    name: "The Elevator",
-    imgUrl: imgOne,
-  },
-  { name: "Kate's Motel", imgUrl: imgTwo },
-  {
-    name: "True Spies",
-    imgUrl: imgFive,
-  },
-  {
-    name: "The Last Laugh",
-    imgUrl: imgThree,
-  },
-  {
-    name: "The Short Cut",
-    imgUrl: imgFour,
-  },
-];
-
-console.log(roomNames);
 
 export const months = [
   "Jan",
@@ -151,7 +166,7 @@ export const calculateDate = () => {
   const timeOfDay = hour >= 12 ? "PM" : "AM";
 
   // converting hours
-  const currentHour = hour % 12 == 0 ? 12 : hour;
+  const currentHour = hour % 12 == 0 ? 12 : hour - 12;
 
   // putting it all together
   const currentTime = `${currentHour}:${currentMinutes}${timeOfDay}`;
@@ -218,3 +233,23 @@ export const calculateTime = (room, time) => {
     }
   }
 };
+
+export const roomNames = [
+  {
+    name: "The Elevator",
+    imgUrl: imgOne,
+  },
+  { name: "Kate's Motel", imgUrl: imgTwo },
+  {
+    name: "True Spies",
+    imgUrl: imgFive,
+  },
+  {
+    name: "The Last Laugh",
+    imgUrl: imgThree,
+  },
+  {
+    name: "The Short Cut",
+    imgUrl: imgFour,
+  },
+];
