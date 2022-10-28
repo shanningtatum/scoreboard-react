@@ -1,0 +1,24 @@
+table{
+    width:100%;
+
+    tr{
+        display:flex;
+        justify-content:space-between;
+        width:100%;
+    }
+
+    td{
+        width:calc((100% / 6) - 10px);
+        text-align: center;
+    }
+
+    th{
+        margin:0 auto;
+    }
+    
+    tbody{
+        display:flex;
+        flex-direction:column-reverse;
+    }
+}
+

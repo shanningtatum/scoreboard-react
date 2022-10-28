@@ -10,37 +10,7 @@ import imgFive from "../assets/room-5.jpg";
 // get best time
 export const getBestTime = (array) => {
   console.log("get best time");
-  const bestTime = [];
-  // loops through array of passed rooms to breakdown the time into a number and puts in bestTime array
-  for (let i = 0; i < array.length; i++) {
-    bestTime.push({
-      time: parseInt(array[i].time.replace(":", "")),
-      date: array[i].date,
-    });
-  }
-  // finds the fastest time
 
-  const fastestTime = Math.min(...bestTime.map((item) => item.time));
-
-  const rejoinTime = [
-    fastestTime.toString().slice(0, 2),
-    fastestTime.toString().slice(-2),
-  ].join(":");
-
-  // loops through the array to find the index that has the best time in it and returns the object into bestDate variable
-  const bestDate = array.find((element) => element.time === rejoinTime);
-
-  if (bestDate.name === "The Elevator") {
-    roomNames[0].bestDate = bestDate;
-  } else if (bestDate.name === "Kate's Motel") {
-    roomNames[1].bestDate = bestDate;
-  } else if (bestDate.name === "True Spies") {
-    roomNames[2].bestDate = bestDate;
-  } else if (bestDate.name === "The Last Laugh") {
-    roomNames[3].bestDate = bestDate;
-  } else if (bestDate.name === "The Short Cut") {
-    roomNames[4].bestDate = bestDate;
-  }
   // need to store the best date in their respective room objects
 };
 
@@ -77,7 +47,7 @@ export const calculateDate = () => {
   const timeOfDay = hour >= 12 ? "PM" : "AM";
 
   // converting hours
-  const currentHour = hour % 12 == 0 ? 12 : hour - 12;
+  const currentHour = hour < 12 ? 12 : hour % 12;
 
   // putting it all together
   const currentTime = `${currentHour}:${currentMinutes}${timeOfDay}`;
