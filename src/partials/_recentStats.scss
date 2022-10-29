@@ -18,7 +18,13 @@ table{
     
     tbody{
         display:flex;
-        flex-direction:column-reverse;
+        flex-direction:column;
     }
 }
 
+.pagination-btn{
+    display:flex;
+    list-style:none;
+    justify-content:space-evenly;
+    border:2px red solid;
+}

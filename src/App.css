@@ -710,6 +710,7 @@ header.darkTheme a {
 .add-stats {
   font-family: "Source Sans Pro", sans-serif;
   position: relative;
+  height: 100vh;
 }
 .add-stats .wrapper.anon {
   display: flex;
@@ -870,6 +871,38 @@ header.darkTheme a {
 
 .error-modal.active {
   display: flex;
+}
+
+.add-stats.darkTheme {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+
+table {
+  width: 100%;
+}
+table tr {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+table td {
+  width: calc(16.6666666667% - 10px);
+  text-align: center;
+}
+table th {
+  margin: 0 auto;
+}
+table tbody {
+  display: flex;
+  flex-direction: column;
+}
+
+.pagination-btn {
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+  border: 2px red solid;
 }
 
 .scoreboard-section {

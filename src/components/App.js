@@ -2,7 +2,7 @@ import "../App.scss";
 import Homepage from "./Homepage";
 import SignIn from "../pages/SignIn";
 import { useEffect, useState } from "react";
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Error from "./Error";
 import Scoreboard from "../pages/Scoreboard";
@@ -63,6 +63,7 @@ function App() {
   };
 
   const getRoomStats = () => {
+    setFetching(true);
     const database = getDatabase(firebase);
     const dbRef = ref(database);
 
@@ -77,7 +78,7 @@ function App() {
           const stringDate = data[key].date.split(" ");
 
           // will only push data from the selected year into tempArray
-          if (stringDate[2] == "2022") {
+          if (stringDate[2] === "2022") {
             tempArray.push(data[key]);
           }
           setRecentData(tempArray);
@@ -156,6 +157,7 @@ function App() {
         roomNames[4].passrate = roomFivePassrate.toFixed(2);
 
         try {
+          console.log("try");
           getBestTime(elevatorPass);
           getBestTime(katesPass);
           getBestTime(trueSpiesPass);
@@ -188,13 +190,14 @@ function App() {
                 </ProtectedRoute>
               }
             >
-              <Route path="/scoreboard" element={<Scoreboard />} />
+              <Route
+                path="/scoreboard"
+                element={<Scoreboard fetching={fetching} />}
+              />
               <Route path="/add" element={<AddStats />} />
               <Route
                 path="/recent"
-                element={
-                  <RecentStats recentData={recentData} fetching={fetching} />
-                }
+                element={<RecentStats recentData={recentData} />}
               />
               <Route path="/edit" element={<EditStats />} />
             </Route>

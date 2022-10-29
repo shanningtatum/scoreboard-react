@@ -1,6 +1,9 @@
 import { roomNames } from "../components/roomNames";
 
 const Scoreboard = ({ fetching }) => {
+  if (fetching) {
+    console.log("fetching...");
+  }
   return (
     <section id="scoreboard" className="scoreboard-section">
       <div className="wrapper">
@@ -30,6 +33,7 @@ const Scoreboard = ({ fetching }) => {
             ) : (
               roomNames.map((room, index) => {
                 const { name, imgUrl, passrate, bestDate } = room;
+                console.log(room);
                 return (
                   <div className="carousel-slides" key={index}>
                     <div className="scoreboard-container">
@@ -62,11 +66,11 @@ const Scoreboard = ({ fetching }) => {
                           </div>
                           <div className="stats-col">
                             <h3># Of Clues</h3>
-                            <p>{bestDate.hint}</p>
+                            {/* <p>{bestDate.hint}</p> */}
                           </div>
                           <div className="stats-col">
                             <h3># Of Players</h3>
-                            <p>{bestDate.player}</p>
+                            {/* <p>{bestDate.player}</p> */}
                           </div>
                         </div>
                         {/* Graph */}
