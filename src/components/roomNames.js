@@ -5,15 +5,6 @@ import imgThree from "../assets/room-3.jpg";
 import imgFour from "../assets/room-4.jpg";
 import imgFive from "../assets/room-5.jpg";
 
-// import firebase things
-
-// get best time
-export const getBestTime = (array) => {
-  console.log("get best time");
-
-  // need to store the best date in their respective room objects
-};
-
 export const months = [
   "Jan",
   "Feb",
@@ -101,8 +92,6 @@ export const calculateTime = (room, time) => {
   } else {
     const remainingSeconds = 60 - seconds;
 
-    console.log(remainingSeconds.toString().length);
-
     if (room === "The Last Laugh") {
       const remainingMinutes = 74 - minutes;
 
@@ -115,7 +104,6 @@ export const calculateTime = (room, time) => {
         remainingSeconds.toString().length < 2
           ? `${remainingMinutes}:0${remainingSeconds}`
           : `${remainingMinutes}:${remainingSeconds}`;
-      console.log(time);
       return time;
     }
   }

@@ -1,15 +1,13 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
 
-const RecentStats = ({ recentData, getRoomStats }) => {
-  console.log(recentData);
+const RecentStats = ({ recentData, getRoomStats, fetching }) => {
   const [postPerPage, setPostPerPage] = useState(10);
   const [userPosts, setUserPosts] = useState(
     recentData.slice(0, recentData.length).reverse()
   );
   const [pageNumber, setPageNumber] = useState(0);
 
-  const statsPerPage = 10;
   const pagesVisited = pageNumber * postPerPage;
 
   const displayStats = userPosts
@@ -28,8 +26,13 @@ const RecentStats = ({ recentData, getRoomStats }) => {
       );
     });
 
+  console.log(recentData);
+  console.log(displayStats);
+
+  // issue is that userpost is not being set at the time of loading page.
+
   const handleSelect = (e) => {
-    setPostPerPage(e.target.value);
+    setPostPerPage(parseInt(e.target.value));
     getRoomStats();
   };
 
@@ -38,6 +41,7 @@ const RecentStats = ({ recentData, getRoomStats }) => {
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
+
   return (
     <section id="recentStats" className="recent-stats">
       <div className="wrapper">
@@ -54,9 +58,9 @@ const RecentStats = ({ recentData, getRoomStats }) => {
             <option value="Stats Per Page" disabled>
               Stats Per Page
             </option>
-            <option value="2">2</option>
-            <option value="8">8</option>
+            <option value="5">5</option>
             <option value="10">10</option>
+            <option value="15">15</option>
           </select>
         </div>
         <table className="room-stats-display">
@@ -70,20 +74,20 @@ const RecentStats = ({ recentData, getRoomStats }) => {
               <th>Hints</th>
             </tr>
           </thead>
-          <tbody>{displayStats}</tbody>
+          <tbody>{!userPosts ? "Loading..." : displayStats}</tbody>
         </table>
-        <ReactPaginate
-          previousLabel={"Previous Page"}
-          nextLabel={"Next Page"}
-          pageCount={pageCount}
-          onPageChange={changePage}
-          containerClassName={"pagination-btn"}
-          previousLinkClassName={"previous-btn"}
-          nextLinkClassName={"next-btn"}
-          disabledClassName={"pagination-disabled"}
-          activeClassName={"pagination-active"}
-        />
       </div>
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={"pagination-btn"}
+        previousLinkClassName={"previous-btn"}
+        nextLinkClassName={"next-btn"}
+        disabledClassName={"pagination-disabled"}
+        activeClassName={"pagination-active"}
+      />
     </section>
   );
 };

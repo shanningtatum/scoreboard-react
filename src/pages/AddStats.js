@@ -8,9 +8,9 @@ import {
 import { DarkModeContext } from "../contexts/DarkModeContext";
 import { UserAuth } from "../contexts/AuthContext";
 import firebase from "../firebase";
-import { getDatabase, ref, push, onValue } from "firebase/database";
+import { getDatabase, ref, push } from "firebase/database";
 
-const AddStats = () => {
+const AddStats = ({ updateStats }) => {
   // declaring variable from AuthContext
   const { user } = UserAuth();
 
@@ -132,6 +132,7 @@ const AddStats = () => {
         setHintInput(undefined);
         setPlayerInput(undefined);
         setToggleTime(false);
+        updateStats();
       })
       .catch((error) => {
         // keep this

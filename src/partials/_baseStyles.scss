@@ -25,6 +25,10 @@ main{
         background-color:rgba($nickel, $alpha:0.7);
         }
     }
+
+    .pagination-disabled{
+        color:$white;
+    }
 }
 
 

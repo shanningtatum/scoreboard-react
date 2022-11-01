@@ -1,8 +1,32 @@
 .recent-stats{
+    height:100vh;
 
     .wrapper{
         font-family:$source;
+        height:85%;
     }
+
+    .filter-posts{
+        display:flex;
+        justify-content:flex-end;
+    }
+
+    select{
+        border:2px $black solid;
+        border-radius:5px;
+        padding:5px;
+        font-family:$source;
+        cursor:pointer;
+
+        &:hover, &:focus{
+            font-family:$source;
+        }
+
+        &::placeholder{
+            font-family:$source;
+        }
+    }
+
 }
 
 table{
@@ -36,6 +60,7 @@ table{
     align-items: center;
     border:2px red solid;
     padding:0;
+    height:5%;
 
     .pagination-active{
         background-color:$red;

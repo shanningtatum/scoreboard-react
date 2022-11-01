@@ -238,12 +238,18 @@ main {
   height: 100vh;
 }
 
+.main-content.darkTheme {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
 .main-content.darkTheme .scoreboard-container {
   color: white;
-  background-color: rgba(0, 0, 0, 0.7);
 }
 .main-content.darkTheme .scoreboard-container .stats-col {
   background-color: rgba(98, 108, 102, 0.7);
+}
+.main-content.darkTheme .pagination-disabled {
+  color: #fff;
 }
 
 h1 {
@@ -874,8 +880,38 @@ header.darkTheme a {
 }
 
 .add-stats.darkTheme {
-  background-color: rgba(0, 0, 0, 0.7);
   color: #fff;
+}
+
+.recent-stats {
+  height: 100vh;
+}
+.recent-stats .wrapper {
+  font-family: "Source Sans Pro", sans-serif;
+  height: 85%;
+}
+.recent-stats .filter-posts {
+  display: flex;
+  justify-content: flex-end;
+}
+.recent-stats select {
+  border: 2px #000 solid;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: "Source Sans Pro", sans-serif;
+  cursor: pointer;
+}
+.recent-stats select:hover, .recent-stats select:focus {
+  font-family: "Source Sans Pro", sans-serif;
+}
+.recent-stats select::-moz-placeholder {
+  font-family: "Source Sans Pro", sans-serif;
+}
+.recent-stats select:-ms-input-placeholder {
+  font-family: "Source Sans Pro", sans-serif;
+}
+.recent-stats select::placeholder {
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 table {
@@ -902,7 +938,22 @@ table tbody {
   display: flex;
   list-style: none;
   justify-content: space-evenly;
+  align-items: center;
   border: 2px red solid;
+  padding: 0;
+  height: 5%;
+}
+.pagination-btn .pagination-active {
+  background-color: #d42025;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #fff;
+}
+.pagination-btn .pagination-disabled {
+  color: rgba(0, 0, 0, 0.5);
+}
+.pagination-btn li {
+  cursor: pointer;
 }
 
 .scoreboard-section {
