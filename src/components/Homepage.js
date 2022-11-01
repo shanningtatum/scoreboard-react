@@ -67,7 +67,7 @@ const Homepage = () => {
               }}
               title={darkMode ? "Toggle light mode" : "Toggle dark mode"}
             >
-              {darkMode ? "Let there be light!" : "Turn off the lights!"}
+              {darkMode ? "🌞" : "🌛"}
             </button>
           </div>
         </div>

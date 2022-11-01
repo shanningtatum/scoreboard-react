@@ -101,6 +101,8 @@ export const calculateTime = (room, time) => {
   } else {
     const remainingSeconds = 60 - seconds;
 
+    console.log(remainingSeconds.toString().length);
+
     if (room === "The Last Laugh") {
       const remainingMinutes = 74 - minutes;
 
@@ -109,7 +111,11 @@ export const calculateTime = (room, time) => {
     } else {
       const remainingMinutes = 59 - minutes;
 
-      time = `${remainingMinutes}:${remainingSeconds}`;
+      time =
+        remainingSeconds.toString().length < 2
+          ? `${remainingMinutes}:0${remainingSeconds}`
+          : `${remainingMinutes}:${remainingSeconds}`;
+      console.log(time);
       return time;
     }
   }

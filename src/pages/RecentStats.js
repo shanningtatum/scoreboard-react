@@ -1,24 +1,26 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
 
-const RecentStats = ({ recentData }) => {
+const RecentStats = ({ recentData, getRoomStats }) => {
   console.log(recentData);
   const [postPerPage, setPostPerPage] = useState(10);
-  const [userPosts, setUserPosts] = useState(recentData.slice(0, 15).reverse());
+  const [userPosts, setUserPosts] = useState(
+    recentData.slice(0, recentData.length).reverse()
+  );
   const [pageNumber, setPageNumber] = useState(0);
 
   const statsPerPage = 10;
-  const pagesVisited = pageNumber * statsPerPage;
+  const pagesVisited = pageNumber * postPerPage;
 
   const displayStats = userPosts
-    .slice(pagesVisited, pagesVisited + statsPerPage)
+    .slice(pagesVisited, pagesVisited + postPerPage)
     .map((stat) => {
       const { date, hint, name, pass, player, time } = stat;
       return (
         <tr>
           <td>{date}</td>
           <td>{name}</td>
-          <td>{pass}</td>
+          <td>{pass === "true" ? "Yes" : "No"}</td>
           <td>{time}</td>
           <td>{player}</td>
           <td>{hint}</td>
@@ -28,6 +30,7 @@ const RecentStats = ({ recentData }) => {
 
   const handleSelect = (e) => {
     setPostPerPage(e.target.value);
+    getRoomStats();
   };
 
   const pageCount = Math.ceil(userPosts.length / postPerPage);
@@ -36,7 +39,7 @@ const RecentStats = ({ recentData }) => {
     setPageNumber(selected);
   };
   return (
-    <section id="recentStats">
+    <section id="recentStats" className="recent-stats">
       <div className="wrapper">
         <h2>Recent Stats</h2>
         <div className="filter-posts">
@@ -51,9 +54,9 @@ const RecentStats = ({ recentData }) => {
             <option value="Stats Per Page" disabled>
               Stats Per Page
             </option>
+            <option value="2">2</option>
+            <option value="8">8</option>
             <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
           </select>
         </div>
         <table className="room-stats-display">

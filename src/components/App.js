@@ -21,12 +21,7 @@ function App() {
 
   const [fetching, setFetching] = useState(true);
 
-  // -- Will run getRoomStats on page load
-  useEffect(() => {
-    getRoomStats();
-  }, []);
-
-  const getBestTime = async (array) => {
+  const getBestTime = (array) => {
     const bestTime = [];
     // loops through array of passed rooms to breakdown the time into a number and puts in bestTime array
     for (let i = 0; i < array.length; i++) {
@@ -45,7 +40,7 @@ function App() {
     ].join(":");
 
     // loops through the array to find the index that has the best time in it and returns the object into bestDate variable
-    const bestDate = await array.find((element) => element.time === rejoinTime);
+    const bestDate = array.find((element) => element.time === rejoinTime);
 
     if (bestDate.name === "The Elevator") {
       roomNames[0].bestDate = bestDate;
@@ -63,115 +58,117 @@ function App() {
   };
 
   const getRoomStats = () => {
-    setFetching(true);
     const database = getDatabase(firebase);
     const dbRef = ref(database);
+    try {
+      get(dbRef).then((response) => {
+        setFetching(true);
 
-    get(dbRef).then((response) => {
-      if (response.exists) {
-        const data = response.val();
+        if (response.exists) {
+          const data = response.val();
 
-        const tempArray = [];
+          const tempArray = [];
 
-        for (let key in data) {
-          // splits the date string so we can get the year from it
-          const stringDate = data[key].date.split(" ");
+          for (let key in data) {
+            // splits the date string so we can get the year from it
+            const stringDate = data[key].date.split(" ");
 
-          // will only push data from the selected year into tempArray
-          if (stringDate[2] === "2022") {
-            tempArray.push(data[key]);
+            // will only push data from the selected year into tempArray
+            if (stringDate[2] === "2022") {
+              tempArray.push(data[key]);
+            }
+            setRecentData(tempArray);
           }
-          setRecentData(tempArray);
-        }
 
-        // First Room Total
-        // -- The Elevator
-        const elevatorTotal = tempArray.filter(
-          (stat) => stat.name === "The Elevator"
-        );
-        // First Room Pass
-        const elevatorPass = elevatorTotal.filter(
-          (stat) => stat.pass === "true"
-        );
-        // FIRST ROOM PASSRATE
-        const roomOnePassrate =
-          (elevatorPass.length / elevatorTotal.length) * 100;
-        // creates passrate property in the roomNames array object
-        roomNames[0].passrate = roomOnePassrate.toFixed(2);
+          // First Room Total
+          // -- The Elevator
+          const elevatorTotal = tempArray.filter(
+            (stat) => stat.name === "The Elevator"
+          );
+          // First Room Pass
+          const elevatorPass = elevatorTotal.filter(
+            (stat) => stat.pass === "true"
+          );
+          // FIRST ROOM PASSRATE
+          const roomOnePassrate =
+            (elevatorPass.length / elevatorTotal.length) * 100;
+          // creates passrate property in the roomNames array object
+          roomNames[0].passrate = roomOnePassrate.toFixed(2);
 
-        // Second Room Total
-        // -- Kate's Motel
-        const katesTotal = tempArray.filter(
-          (stat) => stat.name === "Kate's Motel"
-        );
-        // Second Room Pass
-        const katesPass = katesTotal.filter((stat) => stat.pass === "true");
-        // SECOND ROOM PASSRATE
-        const roomTwoPassrate = (katesPass.length / katesTotal.length) * 100;
-        // creates passrate property in the roomNames array object
-        roomNames[1].passrate = roomTwoPassrate.toFixed(2);
+          // Second Room Total
+          // -- Kate's Motel
+          const katesTotal = tempArray.filter(
+            (stat) => stat.name === "Kate's Motel"
+          );
+          // Second Room Pass
+          const katesPass = katesTotal.filter((stat) => stat.pass === "true");
+          // SECOND ROOM PASSRATE
+          const roomTwoPassrate = (katesPass.length / katesTotal.length) * 100;
+          // creates passrate property in the roomNames array object
+          roomNames[1].passrate = roomTwoPassrate.toFixed(2);
 
-        // Third Room Total
-        // -- True Spies
-        const trueSpiesTotal = tempArray.filter(
-          (stat) => stat.name === "True Spies"
-        );
-        // Third Room Pass
-        const trueSpiesPass = trueSpiesTotal.filter(
-          (stat) => stat.pass === "true"
-        );
-        // THIRD ROOM PASSRATE
-        const roomThreePassrate =
-          (trueSpiesPass.length / trueSpiesTotal.length) * 100;
-        // creates passrate property in the roomNames array object
-        roomNames[2].passrate = roomThreePassrate.toFixed(2);
+          // Third Room Total
+          // -- True Spies
+          const trueSpiesTotal = tempArray.filter(
+            (stat) => stat.name === "True Spies"
+          );
+          // Third Room Pass
+          const trueSpiesPass = trueSpiesTotal.filter(
+            (stat) => stat.pass === "true"
+          );
+          // THIRD ROOM PASSRATE
+          const roomThreePassrate =
+            (trueSpiesPass.length / trueSpiesTotal.length) * 100;
+          // creates passrate property in the roomNames array object
+          roomNames[2].passrate = roomThreePassrate.toFixed(2);
 
-        // 4th Room Total
-        // -- The Last Laugh
-        const lastLaughTotal = tempArray.filter(
-          (stat) => stat.name === "The Last Laugh"
-        );
-        // 4th Room Pass
-        const lastLaughPass = lastLaughTotal.filter(
-          (stat) => stat.pass === "true"
-        );
-        // 4TH ROOM PASSRATE
-        const roomFourPassrate =
-          (lastLaughPass.length / lastLaughTotal.length) * 100;
-        // creates passrate property in the roomNames array object
-        roomNames[3].passrate = roomFourPassrate.toFixed(2);
+          // 4th Room Total
+          // -- The Last Laugh
+          const lastLaughTotal = tempArray.filter(
+            (stat) => stat.name === "The Last Laugh"
+          );
+          // 4th Room Pass
+          const lastLaughPass = lastLaughTotal.filter(
+            (stat) => stat.pass === "true"
+          );
+          // 4TH ROOM PASSRATE
+          const roomFourPassrate =
+            (lastLaughPass.length / lastLaughTotal.length) * 100;
+          // creates passrate property in the roomNames array object
+          roomNames[3].passrate = roomFourPassrate.toFixed(2);
 
-        // Fifth Room Total
-        // -- The Short Cut
-        const shortCutTotal = tempArray.filter(
-          (stat) => stat.name === "The Short Cut"
-        );
-        // Fifth Room Pass
-        const shortCutPass = shortCutTotal.filter(
-          (stat) => stat.pass === "true"
-        );
-        // FIFTH ROOM PASSRATE
-        const roomFivePassrate =
-          (shortCutPass.length / shortCutTotal.length) * 100;
-        // creates passrate property in the roomNames array object
-        roomNames[4].passrate = roomFivePassrate.toFixed(2);
+          // Fifth Room Total
+          // -- The Short Cut
+          const shortCutTotal = tempArray.filter(
+            (stat) => stat.name === "The Short Cut"
+          );
+          // Fifth Room Pass
+          const shortCutPass = shortCutTotal.filter(
+            (stat) => stat.pass === "true"
+          );
+          // FIFTH ROOM PASSRATE
+          const roomFivePassrate =
+            (shortCutPass.length / shortCutTotal.length) * 100;
+          // creates passrate property in the roomNames array object
+          roomNames[4].passrate = roomFivePassrate.toFixed(2);
 
-        try {
-          console.log("try");
           getBestTime(elevatorPass);
           getBestTime(katesPass);
           getBestTime(trueSpiesPass);
           getBestTime(lastLaughPass);
           getBestTime(shortCutPass);
-        } catch (err) {
-          console.log(err);
         }
-      } else {
-        alert("something is wrong");
-      }
-      return "poop";
-    });
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  // -- Will run getRoomStats on page load
+  useEffect(() => {
+    console.log("use effect");
+    getRoomStats();
+  }, []);
 
   return (
     <div className="App">
@@ -197,7 +194,12 @@ function App() {
               <Route path="/add" element={<AddStats />} />
               <Route
                 path="/recent"
-                element={<RecentStats recentData={recentData} />}
+                element={
+                  <RecentStats
+                    recentData={recentData}
+                    getRoomStats={getRoomStats}
+                  />
+                }
               />
               <Route path="/edit" element={<EditStats />} />
             </Route>

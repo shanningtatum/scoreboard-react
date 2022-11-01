@@ -36,34 +36,33 @@ const AddStats = () => {
 
   // creating functions for storing user input into their states
   // -- Room Input
-  const handleRoom = async (e) => {
+  const handleRoom = (e) => {
     setRoomInput(e.target.value);
   };
 
   // -- Pass Input
-  const handlePass = async (e) => {
+  const handlePass = (e) => {
     setPassInput(e.target.value);
   };
 
   // -- Time Input
-  const handleTime = async (e) => {
+  const handleTime = (e) => {
     setTimeInput(e.target.value);
   };
 
   // -- Hint Input
-  const handleHint = async (e) => {
+  const handleHint = (e) => {
     setHintInput(e.target.value);
   };
 
   // -- Player Input
-  const handlePlayer = async (e) => {
+  const handlePlayer = (e) => {
     setPlayerInput(e.target.value);
   };
 
   // -- Runs when time remain updates
-
   // trigger event when button is clicked - this will add the input fields info to database
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (
       roomInput === undefined ||
       passInput === undefined ||
@@ -82,7 +81,7 @@ const AddStats = () => {
       playerInput
     ) {
       // -- calculates the remaining time for a successful escape
-      const remainingTime = await calculateTime(roomInput, timeInput);
+      const remainingTime = calculateTime(roomInput, timeInput);
 
       if (
         remainingTime === "Invalid Entry: Minutes" ||

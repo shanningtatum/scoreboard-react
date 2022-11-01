@@ -1,3 +1,10 @@
+.recent-stats{
+
+    .wrapper{
+        font-family:$source;
+    }
+}
+
 table{
     width:100%;
 
@@ -26,5 +33,22 @@ table{
     display:flex;
     list-style:none;
     justify-content:space-evenly;
+    align-items: center;
     border:2px red solid;
+    padding:0;
+
+    .pagination-active{
+        background-color:$red;
+        padding:5px 10px;
+        border-radius:5px;
+        color:$white;
+    }
+
+    .pagination-disabled{
+        color:rgba($black, $alpha:0.5);
+    }
+
+    li{
+        cursor:pointer;
+    }
 }

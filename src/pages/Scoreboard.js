@@ -66,11 +66,11 @@ const Scoreboard = ({ fetching }) => {
                           </div>
                           <div className="stats-col">
                             <h3># Of Clues</h3>
-                            {/* <p>{bestDate.hint}</p> */}
+                            <p>{bestDate.hint}</p>
                           </div>
                           <div className="stats-col">
                             <h3># Of Players</h3>
-                            {/* <p>{bestDate.player}</p> */}
+                            <p>{bestDate.player}</p>
                           </div>
                         </div>
                         {/* Graph */}
