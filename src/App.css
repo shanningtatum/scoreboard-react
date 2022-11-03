@@ -235,7 +235,12 @@ header {
 main {
   width: 85%;
   margin-left: auto;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 100%;
+}
+
+section {
+  height: 100%;
 }
 
 .main-content.darkTheme {
@@ -249,7 +254,11 @@ main {
   background-color: rgba(98, 108, 102, 0.7);
 }
 .main-content.darkTheme .pagination-disabled {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+.main-content.darkTheme .pagination-disabled:hover {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.5) !important;
 }
 
 h1 {
@@ -684,7 +693,10 @@ header .user-info {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 20vh;
+  height: 30%;
+}
+header p {
+  font-size: clamp(0.8rem, 1vw, 1rem);
 }
 header button {
   background-color: #d42025;
@@ -884,15 +896,19 @@ header.darkTheme a {
 }
 
 .recent-stats {
-  height: 100vh;
+  padding-bottom: 10px;
 }
 .recent-stats .wrapper {
   font-family: "Source Sans Pro", sans-serif;
-  height: 85%;
+  width: 90%;
 }
 .recent-stats .filter-posts {
   display: flex;
   justify-content: flex-end;
+}
+.recent-stats .room-stats-display {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(1rem, 4vw, 1.2rem);
 }
 .recent-stats select {
   border: 2px #000 solid;
@@ -917,9 +933,15 @@ header.darkTheme a {
 table {
   width: 100%;
 }
+table thead {
+  background-color: #d42025 !important;
+  color: #fff;
+  transform: skew(-8deg);
+}
 table tr {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 table td {
@@ -933,27 +955,64 @@ table tbody {
   display: flex;
   flex-direction: column;
 }
+table tbody tr {
+  margin-bottom: 10px;
+  padding: 10px 0;
+}
+table tbody tr:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: skew(-8deg);
+}
+table tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.2);
+  transform: skew(-8deg);
+}
 
 .pagination-btn {
   display: flex;
   list-style: none;
   justify-content: space-evenly;
   align-items: center;
-  border: 2px red solid;
+  margin: 20px 0;
   padding: 0;
   height: 5%;
 }
 .pagination-btn .pagination-active {
-  background-color: #d42025;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: #fff;
+  transform: translateX(3px) translateY(3px);
+}
+.pagination-btn .pagination-active a {
+  background-color: #fff;
+  color: #000;
+  box-shadow: 3px 3px #000;
 }
 .pagination-btn .pagination-disabled {
-  color: rgba(0, 0, 0, 0.5);
+  transform: translateX(3px) translateY(3px);
+}
+.pagination-btn .pagination-disabled a {
+  background-color: #fff;
+  color: #000;
+  box-shadow: 3px 3px #000;
+}
+.pagination-btn a {
+  color: #fff;
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 5px 10px;
+  background-color: #d42025;
+  cursor: pointer;
+  box-shadow: 6px 6px #000;
+  border: 2px #d42025 solid;
+  transition: box-shadow 0.3s, background-color 0.3s;
+}
+.pagination-btn a:hover {
+  background-color: #fff;
+  color: #000;
+  box-shadow: 3px 3px #000;
 }
 .pagination-btn li {
-  cursor: pointer;
+  transition: transform 0.3s;
+}
+.pagination-btn li:hover {
+  transform: translateY(3px) translateX(3px);
 }
 
 .scoreboard-section {

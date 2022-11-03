@@ -1,15 +1,21 @@
 .recent-stats{
-    height:100vh;
+    padding-bottom:10px;
 
     .wrapper{
         font-family:$source;
-        height:85%;
+        width:90%;
     }
 
     .filter-posts{
         display:flex;
         justify-content:flex-end;
     }
+    
+    .room-stats-display{
+        font-family:$bebas;
+        font-size:clamp(1rem, 4vw, 1.2rem);
+    }
+
 
     select{
         border:2px $black solid;
@@ -32,9 +38,16 @@
 table{
     width:100%;
 
+    thead{
+        background-color:$red !important;
+        color:$white;
+        transform:skew(-8deg);
+    }
+
     tr{
         display:flex;
         justify-content:space-between;
+        align-items: center;
         width:100%;
     }
 
@@ -50,6 +63,20 @@ table{
     tbody{
         display:flex;
         flex-direction:column;
+
+        tr{
+            margin-bottom:10px;
+            padding:10px 0;
+        }
+
+        tr:nth-child(odd){        
+            background-color:rgba($black, $alpha:0.5);
+            transform:skew(-8deg);
+        }
+        tr:nth-child(even){        
+            background-color:rgba($black, $alpha:0.2);
+            transform:skew(-8deg);
+        }
     }
 }
 
@@ -58,22 +85,55 @@ table{
     list-style:none;
     justify-content:space-evenly;
     align-items: center;
-    border:2px red solid;
+    margin:20px 0;
     padding:0;
     height:5%;
 
+
     .pagination-active{
-        background-color:$red;
-        padding:5px 10px;
-        border-radius:5px;
-        color:$white;
+        transform:translateX(3px) translateY(3px);
+
+        a{
+            background-color:$white;
+            color:$black;
+            box-shadow:3px 3px $black;
+        }
+
     }
 
     .pagination-disabled{
-        color:rgba($black, $alpha:0.5);
+        transform:translateX(3px) translateY(3px);
+
+        a{
+            background-color:$white;
+            color:$black;
+            box-shadow:3px 3px $black;
+        }
+    }
+    
+
+    a{
+        color:$white;
+        font-family:$source;
+        padding:5px 10px;
+        background-color:$red;
+        cursor:pointer;
+        box-shadow:6px 6px $black;
+        border:2px $red solid;
+        transition: box-shadow 0.3s, background-color 0.3s;
+
+        &:hover{
+            background-color:$white;
+            color:$black;
+            box-shadow:3px 3px $black;
+        }
     }
 
     li{
-        cursor:pointer;
+        transition: transform 0.3s;
+        &:hover{
+            transform:translateY(3px) translateX(3px);
+        }
     }
+
 }

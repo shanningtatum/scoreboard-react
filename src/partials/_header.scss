@@ -39,13 +39,15 @@ header{
         }
     }
 
-
-
     .user-info{
         display:flex;
         flex-direction:column;
         justify-content:space-evenly;
-        height:20vh;
+        height:30%;
+    }
+
+    p{
+        font-size:clamp(0.8rem, 1vw, 1rem);
     }
 
     button{

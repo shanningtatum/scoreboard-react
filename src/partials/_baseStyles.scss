@@ -4,6 +4,7 @@
     margin:0 auto;
 }
 
+
 header{
     background-color:#909793;
 }
@@ -11,7 +12,12 @@ header{
 main{
     width:85%;
     margin-left:auto;
-    height:100vh;
+    min-height:100vh;
+    max-height:100%;
+}
+
+section{
+    height:100%;
 }
 
 .main-content.darkTheme{
@@ -27,7 +33,13 @@ main{
     }
 
     .pagination-disabled{
-        color:$white;
+        color:rgba($white, $alpha:0.5) !important;
+
+        &:hover{
+            background-color:transparent;
+            color:rgba($white, $alpha:0.5) !important;
+        }
+
     }
 }
 
