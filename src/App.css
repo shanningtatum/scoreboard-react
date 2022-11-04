@@ -895,16 +895,20 @@ header.darkTheme a {
   color: #fff;
 }
 
-.recent-stats {
-  padding-bottom: 10px;
-}
 .recent-stats .wrapper {
+  display: flex;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  flex-direction: column;
+  justify-content: space-evenly;
   font-family: "Source Sans Pro", sans-serif;
   width: 90%;
 }
-.recent-stats .filter-posts {
+.recent-stats .sort-results {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 }
 .recent-stats .room-stats-display {
   font-family: "Bebas Neue", sans-serif;
@@ -913,11 +917,10 @@ header.darkTheme a {
 .recent-stats select {
   border: 2px #000 solid;
   border-radius: 5px;
-  padding: 5px;
   font-family: "Source Sans Pro", sans-serif;
   cursor: pointer;
 }
-.recent-stats select:hover, .recent-stats select:focus {
+.recent-stats select option {
   font-family: "Source Sans Pro", sans-serif;
 }
 .recent-stats select::-moz-placeholder {
@@ -976,6 +979,7 @@ table tbody tr:nth-child(even) {
   margin: 20px 0;
   padding: 0;
   height: 5%;
+  width: 70%;
 }
 .pagination-btn .pagination-active {
   transform: translateX(3px) translateY(3px);

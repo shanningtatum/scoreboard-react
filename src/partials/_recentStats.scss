@@ -1,14 +1,18 @@
 .recent-stats{
-    padding-bottom:10px;
 
     .wrapper{
+        display:flex;
+        height:max-content;
+        flex-direction:column;
+        justify-content:space-evenly;
         font-family:$source;
         width:90%;
     }
 
-    .filter-posts{
+    .sort-results{
         display:flex;
-        justify-content:flex-end;
+        justify-content:space-between;
+        align-items: center;
     }
     
     .room-stats-display{
@@ -20,11 +24,11 @@
     select{
         border:2px $black solid;
         border-radius:5px;
-        padding:5px;
         font-family:$source;
         cursor:pointer;
+        
 
-        &:hover, &:focus{
+        option{
             font-family:$source;
         }
 
@@ -88,6 +92,7 @@ table{
     margin:20px 0;
     padding:0;
     height:5%;
+    width:70%;
 
 
     .pagination-active{
