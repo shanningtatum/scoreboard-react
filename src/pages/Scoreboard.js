@@ -71,7 +71,7 @@ const Scoreboard = ({ fetching }) => {
                         </div>
                         {/* Graph */}
                         <div className="stats-row graph-row">
-                          <div className="stats-graph">Graph Here</div>
+                          <canvas className="myCanvas">Graph Here</canvas>
                         </div>
                       </div>
                     </div>

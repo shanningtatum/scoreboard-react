@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
 import { roomNames } from "../components/roomNames";
+import { BiEdit } from "react-icons/bi";
 
 const RecentStats = ({ recentData, getRoomStats, fetching }) => {
   const [postPerPage, setPostPerPage] = useState(10);
@@ -34,11 +35,13 @@ const RecentStats = ({ recentData, getRoomStats, fetching }) => {
   };
 
   const handleFilter = (e) => {
-    console.log(recentData);
-    setUserPosts(recentData.slice(0, recentData.length).reverse());
-    console.log(userPosts);
-    setUserPosts(recentData.filter((post) => post.name === e.target.value));
-    console.log(userPosts);
+    if (e.target.value === "All") {
+      setUserPosts(recentData.slice(0, recentData.length).reverse());
+    } else {
+      setUserPosts(
+        recentData.filter((post) => post.name === e.target.value).reverse()
+      );
+    }
   };
 
   const pageCount = Math.ceil(userPosts.length / postPerPage);
@@ -56,6 +59,22 @@ const RecentStats = ({ recentData, getRoomStats, fetching }) => {
       <div className="wrapper">
         <h2>Recent Stats</h2>
         <div className="filter-posts">
+          <p>Filter By:&nbsp;</p>
+          <select
+            name="stat-per-page"
+            id="stat-per-page"
+            onChange={(e) => {
+              handleSelect(e);
+            }}
+            defaultValue={"Stats Per Page"}
+          >
+            <option value="Stats Per Page" disabled>
+              Stats Per Page
+            </option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="35">35</option>
+          </select>
           <select
             name="filter-post-select"
             defaultValue={"Room Name"}
@@ -67,9 +86,11 @@ const RecentStats = ({ recentData, getRoomStats, fetching }) => {
             <option value="All">All</option>
             {roomNames.map((room, index) => {
               return (
-                <option value={room.name} key={index}>
-                  {room.name}
-                </option>
+                <>
+                  <option value={room.name} key={index}>
+                    {room.name}
+                  </option>
+                </>
               );
             })}
           </select>
@@ -85,44 +106,36 @@ const RecentStats = ({ recentData, getRoomStats, fetching }) => {
               <th>Hints</th>
             </tr>
           </thead>
-          <tbody>{!userPosts ? "Loading..." : displayStats}</tbody>
+          <tbody>
+            {userPosts == "" ? (
+              <p>Click on another page and click back to display results</p>
+            ) : (
+              displayStats
+            )}
+          </tbody>
         </table>
         <div className="sort-results">
           <p>
             Results&nbsp;
-            {pagesVisited + postPerPage > recentData.length
-              ? recentData.length
-              : `${pagesVisited + postPerPage}`}
+            {`${pagesVisited + 1}`} -{" "}
+            {pagesVisited + postPerPage > userPosts.length
+              ? userPosts.length
+              : pagesVisited + postPerPage}
             &nbsp;of
-            {` ${recentData.length}`}
+            {` ${userPosts.length}`}
           </p>
-          <select
-            name="stat-per-page"
-            id="stat-per-page"
-            onChange={(e) => {
-              handleSelect(e);
-            }}
-            defaultValue={"Stats Per Page"}
-          >
-            <option value="Stats Per Page" disabled>
-              Stats Per Page
-            </option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-          </select>
-          <ReactPaginate
-            previousLabel={"Previous"}
-            nextLabel={"Next"}
-            pageCount={pageCount}
-            onPageChange={changePage}
-            containerClassName={"pagination-btn"}
-            previousLinkClassName={"previous-btn"}
-            nextLinkClassName={"next-btn"}
-            disabledClassName={"pagination-disabled"}
-            activeClassName={"pagination-active"}
-          />
         </div>
+        <ReactPaginate
+          previousLabel={"Previous"}
+          nextLabel={"Next"}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={"pagination-btn"}
+          previousLinkClassName={"previous-btn"}
+          nextLinkClassName={"next-btn"}
+          disabledClassName={"pagination-disabled"}
+          activeClassName={"pagination-active"}
+        />
       </div>
     </section>
   );

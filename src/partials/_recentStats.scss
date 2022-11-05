@@ -6,13 +6,25 @@
         flex-direction:column;
         justify-content:space-evenly;
         font-family:$source;
+        padding-bottom:40px;
         width:90%;
     }
+    h2{
+        margin:0;
+    }
 
+    .filter-posts{
+        display:flex;
+        margin:20px 0;
+        justify-content:space-evenly;
+        align-items: center;
+        margin-left:auto;
+        width:40%;
+        border:2px red solid;
+    }
     .sort-results{
         display:flex;
-        justify-content:space-between;
-        align-items: center;
+        justify-content: center;
     }
     
     .room-stats-display{
@@ -25,6 +37,7 @@
         border:2px $black solid;
         border-radius:5px;
         font-family:$source;
+        height:fit-content;
         cursor:pointer;
         
 
@@ -92,7 +105,7 @@ table{
     margin:20px 0;
     padding:0;
     height:5%;
-    width:70%;
+    width:100%;
 
 
     .pagination-active{

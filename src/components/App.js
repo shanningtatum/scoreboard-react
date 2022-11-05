@@ -25,8 +25,7 @@ function App() {
   const dbRef = ref(database);
 
   const updateStats = () => {
-    onValue(dbRef, (response) => {
-      console.log("on value");
+    onValue(dbRef, () => {
       getRoomStats();
     });
   };

@@ -903,12 +903,24 @@ header.darkTheme a {
   flex-direction: column;
   justify-content: space-evenly;
   font-family: "Source Sans Pro", sans-serif;
+  padding-bottom: 40px;
   width: 90%;
+}
+.recent-stats h2 {
+  margin: 0;
+}
+.recent-stats .filter-posts {
+  display: flex;
+  margin: 20px 0;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: auto;
+  width: 40%;
+  border: 2px red solid;
 }
 .recent-stats .sort-results {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
 }
 .recent-stats .room-stats-display {
   font-family: "Bebas Neue", sans-serif;
@@ -918,6 +930,9 @@ header.darkTheme a {
   border: 2px #000 solid;
   border-radius: 5px;
   font-family: "Source Sans Pro", sans-serif;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   cursor: pointer;
 }
 .recent-stats select option {
@@ -979,7 +994,7 @@ table tbody tr:nth-child(even) {
   margin: 20px 0;
   padding: 0;
   height: 5%;
-  width: 70%;
+  width: 100%;
 }
 .pagination-btn .pagination-active {
   transform: translateX(3px) translateY(3px);
