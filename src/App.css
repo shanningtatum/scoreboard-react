@@ -1197,6 +1197,11 @@ table tbody tr:nth-child(even) {
           animation: appearIn 10s infinite 10s;
 }
 
+#myCanvas {
+  width: 400px;
+  height: 400px;
+}
+
 .error-page {
   display: flex;
   justify-content: center;

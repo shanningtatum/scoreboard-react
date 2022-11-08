@@ -1,6 +1,28 @@
 import { roomNames } from "../components/roomNames";
+import { Bar } from "react-chartjs-2";
+import { Chart } from "chart.js/auto";
 
-const Scoreboard = ({ fetching }) => {
+const Scoreboard = ({ fetching, recentData }) => {
+  console.log(recentData);
+
+  // need to create a new dataset that takes recent data and stores it by name
+
+  const dataStats = {
+    labels: recentData.map((name) => {
+      return name.name;
+    }),
+    datasets: [
+      {
+        label: "Best Escape",
+        backgroundColor: "rgb(255, 99, 132)",
+        borderColor: "rgb(255, 99, 132)",
+        data: recentData.map((time) => {
+          return time.time;
+        }),
+      },
+    ],
+  };
+
   return (
     <section id="scoreboard" className="scoreboard-section">
       <div className="wrapper">
@@ -71,7 +93,7 @@ const Scoreboard = ({ fetching }) => {
                         </div>
                         {/* Graph */}
                         <div className="stats-row graph-row">
-                          <canvas className="myCanvas">Graph Here</canvas>
+                          <Bar data={dataStats} />
                         </div>
                       </div>
                     </div>

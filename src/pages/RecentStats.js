@@ -107,7 +107,7 @@ const RecentStats = ({ recentData, getRoomStats, fetching }) => {
             </tr>
           </thead>
           <tbody>
-            {userPosts == "" ? (
+            {userPosts === "" ? (
               <p>Click on another page and click back to display results</p>
             ) : (
               displayStats
