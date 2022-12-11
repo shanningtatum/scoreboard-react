@@ -1,9 +1,9 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
 import { roomNames } from "../components/roomNames";
-import { BiEdit } from "react-icons/bi";
+// import { BiEdit } from "react-icons/bi";
 
-const RecentStats = ({ recentData, getRoomStats, fetching }) => {
+const RecentStats = ({ recentData, getRoomStats}) => {
   const [postPerPage, setPostPerPage] = useState(10);
   const [userPosts, setUserPosts] = useState(
     recentData.slice(0, recentData.length).reverse()
@@ -17,7 +17,8 @@ const RecentStats = ({ recentData, getRoomStats, fetching }) => {
     .map((stat) => {
       const { date, hint, name, pass, player, time } = stat;
       return (
-        <tr>
+        <> 
+         <tr>
           <td>{date}</td>
           <td>{name}</td>
           <td>{pass === "true" ? "Yes" : "No"}</td>
@@ -25,6 +26,8 @@ const RecentStats = ({ recentData, getRoomStats, fetching }) => {
           <td>{player}</td>
           <td>{hint}</td>
         </tr>
+        </>
+       
       );
     });
 

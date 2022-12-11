@@ -24,7 +24,6 @@ const AddStats = ({ updateStats }) => {
   const [timeInput, setTimeInput] = useState("");
   const [hintInput, setHintInput] = useState(undefined);
   const [playerInput, setPlayerInput] = useState(undefined);
-  const [timeRemain, setTimeRemain] = useState("");
 
   // state for error messages
   const [errorMessage, setErrorMessage] = useState("");
@@ -92,11 +91,9 @@ const AddStats = ({ updateStats }) => {
         setToggleModal(true);
       } else if (timeInput !== "N/A") {
         // -- if time input is not equal to N/A aka false then run this
-        setTimeRemain(remainingTime);
         addStat(remainingTime);
       } else {
         // -- all other cases, use timeInput aka N/A
-        setTimeRemain(timeInput);
         addStat(timeInput);
       }
     } else {
