@@ -72,10 +72,6 @@ const Scoreboard = ({ fetching, recentData }) => {
                             <p>{bestDate.player}</p>
                           </div>
                         </div>
-                        {/* Graph */}
-                        <div className="stats-row graph-row">
-                          <Bar data={dataStats} />
-                        </div>
                       </div>
                     </div>
                   </div>
