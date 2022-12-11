@@ -148,9 +148,7 @@ function App() {
   };
 
   // -- Will run getRoomStats on page load
-  useEffect(() => {
-    getRoomStats();
-  }, [getRoomStats]);
+  getRoomStats();
 
   return (
     <div className="App">

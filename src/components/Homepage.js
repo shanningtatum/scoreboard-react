@@ -2,7 +2,7 @@ import { UserAuth } from "../contexts/AuthContext";
 import { useContext } from "react";
 import { useNavigate, NavLink, Outlet, Link } from "react-router-dom";
 import { DarkModeContext } from "../contexts/DarkModeContext";
-import Dashboard from "./Dashboard";
+// import Dashboard from "./Dashboard";
 
 const Homepage = () => {
   const { user, logoutUser } = UserAuth();
@@ -77,7 +77,6 @@ const Homepage = () => {
         id="mainContent"
         className={darkMode ? "main-content darkTheme" : "main-content"}
       >
-        <Dashboard />
         <Outlet />
       </main>
     </>
