@@ -1,7 +1,7 @@
 import "../App.scss";
 import Homepage from "./Homepage";
 import SignIn from "../pages/SignIn";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Error from "./Error";
@@ -147,9 +147,7 @@ function App() {
   };
 
   // -- Will run getRoomStats on page load
-  useEffect(()=>{
-    getRoomStats();
-  },[]);
+
 
   return (
     <div className="App">
