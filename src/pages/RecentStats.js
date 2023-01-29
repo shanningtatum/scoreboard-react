@@ -14,11 +14,10 @@ const RecentStats = ({ recentData, getRoomStats}) => {
 
   const displayStats = userPosts
     .slice(pagesVisited, pagesVisited + postPerPage)
-    .map((stat) => {
+    .map((stat, index) => {
       const { date, hint, name, pass, player, time } = stat;
       return (
-        <> 
-         <tr>
+         <tr key={index}>
           <td>{date}</td>
           <td>{name}</td>
           <td>{pass === "true" ? "Yes" : "No"}</td>
@@ -26,7 +25,6 @@ const RecentStats = ({ recentData, getRoomStats}) => {
           <td>{player}</td>
           <td>{hint}</td>
         </tr>
-        </>
        
       );
     });
@@ -52,10 +50,6 @@ const RecentStats = ({ recentData, getRoomStats}) => {
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-
-  // need to create a function that reads the selectoption
-  // goes into recent data array and only returns array of that e.target.value
-  // might need to manipulate user Posts or filter user Posts to return that value
 
   return (
     <section id="recentStats" className="recent-stats">
@@ -89,11 +83,9 @@ const RecentStats = ({ recentData, getRoomStats}) => {
             <option value="All">All</option>
             {roomNames.map((room, index) => {
               return (
-                <>
-                  <option value={room.name} key={index}>
-                    {room.name}
-                  </option>
-                </>
+                <option value={room.name} key={index + 1}>
+                  {room.name}
+                </option>
               );
             })}
           </select>

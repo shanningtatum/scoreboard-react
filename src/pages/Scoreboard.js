@@ -1,5 +1,5 @@
 import { roomNames } from "../components/roomNames";
-import { Bar } from "react-chartjs-2";
+// import { Bar } from "react-chartjs-2";
 // import { Chart } from "chart.js/auto";
 
 const Scoreboard = ({ fetching, recentData }) => {

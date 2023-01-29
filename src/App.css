@@ -9,7 +9,12 @@ body {
   margin: 0;
 }
 
-article, aside, footer, header, nav, section {
+article,
+aside,
+footer,
+header,
+nav,
+section {
   display: block;
 }
 
@@ -18,7 +23,9 @@ h1 {
   margin: 0.67em 0;
 }
 
-figcaption, figure, main {
+figcaption,
+figure,
+main {
   display: block;
 }
 
@@ -46,18 +53,22 @@ abbr[title] {
   border-bottom: none;
   text-decoration: underline;
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
-b, strong {
+b,
+strong {
   font-weight: inherit;
 }
 
-b, strong {
+b,
+strong {
   font-weight: bolder;
 }
 
-code, kbd, samp {
+code,
+kbd,
+samp {
   font-family: monospace, monospace;
   font-size: 1em;
 }
@@ -75,7 +86,8 @@ small {
   font-size: 80%;
 }
 
-sub, sup {
+sub,
+sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -90,7 +102,8 @@ sup {
   top: -0.5em;
 }
 
-audio, video {
+audio,
+video {
   display: inline-block;
 }
 
@@ -107,31 +120,46 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-button, input, optgroup, select, textarea {
+button,
+input,
+optgroup,
+select,
+textarea {
   font-family: sans-serif;
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
 }
 
-button, input {
+button,
+input {
   overflow: visible;
 }
 
-button, select {
+button,
+select {
   text-transform: none;
 }
 
-button, html [type=button], [type=reset], [type=submit] {
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
 }
 
-button::-moz-focus-inner, [type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner {
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 
-button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring {
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -157,21 +185,24 @@ textarea {
   overflow: auto;
 }
 
-[type=checkbox], [type=radio] {
+[type="checkbox"],
+[type="radio"] {
   box-sizing: border-box;
   padding: 0;
 }
 
-[type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
-[type=search] {
+[type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
-[type=search]::-webkit-search-cancel-button, [type=search]::-webkit-search-decoration {
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -180,7 +211,8 @@ textarea {
   font: inherit;
 }
 
-details, menu {
+details,
+menu {
   display: block;
 }
 
@@ -213,7 +245,7 @@ template {
   padding: 0;
   white-space: nowrap;
   -webkit-clip-path: inset(100%);
-          clip-path: inset(100%);
+  clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
@@ -577,7 +609,7 @@ section h2::before {
   border-radius: 20px;
   border: 2px #fff solid;
   -webkit-animation: shake 0.9s forwards;
-          animation: shake 0.9s forwards;
+  animation: shake 0.9s forwards;
   transition: transform 0.3s;
 }
 .signin-section .login-message.active {
@@ -629,7 +661,8 @@ section h2::before {
   text-transform: uppercase;
   font-weight: bold;
 }
-.signin-section .signupPage input, .signin-section .signupPage label {
+.signin-section .signupPage input,
+.signin-section .signupPage label {
   width: 80%;
   margin: 10px auto;
 }
@@ -646,7 +679,8 @@ section h2::before {
   cursor: pointer;
   margin-bottom: 30px;
 }
-.signin-section .signupPage button:hover, .signin-section .signupPage button:focus {
+.signin-section .signupPage button:hover,
+.signin-section .signupPage button:focus {
   transform: translateY(5px) translateX(5px);
   box-shadow: 3px 3px #000;
   border: 2px #000 solid;
@@ -709,7 +743,8 @@ header button {
   transition: background-color 0.3s, color 0.3s;
   cursor: pointer;
 }
-header button:hover, header button:focus {
+header button:hover,
+header button:focus {
   background-color: #fff;
   color: #000;
 }
@@ -746,27 +781,27 @@ header.darkTheme a {
   display: flex;
   flex-direction: column;
 }
-.add-stats input[type=radio] {
+.add-stats input[type="radio"] {
   display: none;
 }
-.add-stats input[type=radio]:checked + label {
+.add-stats input[type="radio"]:checked + label {
   background-color: white;
   color: #000;
   transform: translateY(5px) translateX(5px);
   box-shadow: 3px 3px #000;
 }
-.add-stats input[type=text] {
+.add-stats input[type="text"] {
   border: 2px #000 solid;
   padding: 5px 10px;
   font-family: "Source Sans Pro", sans-serif;
 }
-.add-stats input[type=text]::-moz-placeholder {
+.add-stats input[type="text"]::-moz-placeholder {
   font-family: "Source Sans Pro", sans-serif;
 }
-.add-stats input[type=text]:-ms-input-placeholder {
+.add-stats input[type="text"]:-ms-input-placeholder {
   font-family: "Source Sans Pro", sans-serif;
 }
-.add-stats input[type=text]::placeholder {
+.add-stats input[type="text"]::placeholder {
   font-family: "Source Sans Pro", sans-serif;
 }
 .add-stats label {
@@ -781,7 +816,8 @@ header.darkTheme a {
   margin-right: 20px;
   transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
 }
-.add-stats label:hover, .add-stats label:focus {
+.add-stats label:hover,
+.add-stats label:focus {
   background-color: white;
   transform: translateY(5px) translateX(5px);
   box-shadow: 3px 3px #000;
@@ -802,7 +838,8 @@ header.darkTheme a {
   text-transform: uppercase;
   transition: background-color 0.3s, color 0.3s;
 }
-.add-stats button:hover, .add-stats button:focus {
+.add-stats button:hover,
+.add-stats button:focus {
   background-color: #fff;
   color: #000;
 }
@@ -880,7 +917,8 @@ header.darkTheme a {
   width: 50%;
   margin: 0 auto;
 }
-.error-modal button:hover, .error-modal button:focus {
+.error-modal button:hover,
+.error-modal button:focus {
   background-color: white;
   transform: translateY(5px) translateX(5px);
   box-shadow: 3px 3px #000;
@@ -1061,7 +1099,7 @@ table tbody tr:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.2);
   color: #000;
   -webkit-animation: slideAnimate 100s infinite;
-          animation: slideAnimate 100s infinite;
+  animation: slideAnimate 100s infinite;
   height: inherit;
 }
 .scoreboard-section .scoreboard-container {
@@ -1125,7 +1163,7 @@ table tbody tr:nth-child(even) {
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   -webkit-animation: zoomIn 60s infinite;
-          animation: zoomIn 60s infinite;
+  animation: zoomIn 60s infinite;
 }
 .scoreboard-section h3 {
   font-family: "Bebas Neue", sans-serif;
@@ -1151,7 +1189,7 @@ table tbody tr:nth-child(even) {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   position: absolute;
 }
 .scoreboard-section .first-slide ul {
@@ -1173,15 +1211,15 @@ table tbody tr:nth-child(even) {
 .scoreboard-section .first-slide li:nth-child(1) img {
   transform: translateY(-100%);
   -webkit-animation: slideDown 10s infinite ease-in-out;
-          animation: slideDown 10s infinite ease-in-out;
+  animation: slideDown 10s infinite ease-in-out;
 }
 .scoreboard-section .first-slide li:nth-child(3) img {
   -webkit-animation: slideDown 20s infinite 10s;
-          animation: slideDown 20s infinite 10s;
+  animation: slideDown 20s infinite 10s;
 }
 .scoreboard-section .first-slide li:nth-child(5) img {
   -webkit-animation: slideDown 20s infinite 10s;
-          animation: slideDown 20s infinite 10s;
+  animation: slideDown 20s infinite 10s;
 }
 .scoreboard-section .first-slide p {
   top: 40%;
@@ -1193,7 +1231,7 @@ table tbody tr:nth-child(even) {
   opacity: 0;
   color: #fff;
   -webkit-animation: appearIn 10s infinite 10s;
-          animation: appearIn 10s infinite 10s;
+  animation: appearIn 10s infinite 10s;
 }
 
 #myCanvas {
@@ -1251,7 +1289,8 @@ table tbody tr:nth-child(even) {
   border: 2px #000 solid;
   text-decoration: none;
 }
-.error-page a:hover, .error-page a:focus {
+.error-page a:hover,
+.error-page a:focus {
   background-color: #fff;
   color: #000;
-}/*# sourceMappingURL=App.css.map */
+} /*# sourceMappingURL=App.css.map */

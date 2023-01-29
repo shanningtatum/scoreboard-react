@@ -45,9 +45,8 @@ function App() {
       fastestTime.toString().slice(0, 2),
       fastestTime.toString().slice(-2),
     ].join(":");
-
     const bestDate = array.find((element) => element.time === rejoinTime);
-
+    
     if (bestDate.name === "The Elevator") {
       roomNames[0].bestDate = bestDate;
     } else if (bestDate.name === "Kate's Motel") {
@@ -65,6 +64,7 @@ function App() {
 
   const getRoomStats = () => {
     get(dbRef).then((response) => {
+
       setFetching(true);
 
       if (response.exists) {
@@ -74,8 +74,7 @@ function App() {
 
         for (let key in data) {
           const stringDate = data[key].date.split(" ");
-
-          if (stringDate[2] === "2022") {
+          if (stringDate[2] === "2022" || stringDate[2] === "2023") {
             tempArray.push(data[key]);
           }
           setRecentData(tempArray);
@@ -87,7 +86,7 @@ function App() {
           (stat) => stat.name === "The Elevator"
         );
         const elevatorPass = elevatorTotal.filter(
-          (stat) => stat.pass === "true"
+          (stat) => stat.pass === "Yes"
         );
         const roomOnePassrate =
           (elevatorPass.length / elevatorTotal.length) * 100;
@@ -98,7 +97,7 @@ function App() {
         const katesTotal = tempArray.filter(
           (stat) => stat.name === "Kate's Motel"
         );
-        const katesPass = katesTotal.filter((stat) => stat.pass === "true");
+        const katesPass = katesTotal.filter((stat) => stat.pass === "Yes");
         const roomTwoPassrate = (katesPass.length / katesTotal.length) * 100;
         roomNames[1].passrate = roomTwoPassrate.toFixed(2);
 
@@ -108,7 +107,7 @@ function App() {
           (stat) => stat.name === "True Spies"
         );
         const trueSpiesPass = trueSpiesTotal.filter(
-          (stat) => stat.pass === "true"
+          (stat) => stat.pass === "Yes"
         );
         const roomThreePassrate =
           (trueSpiesPass.length / trueSpiesTotal.length) * 100;
@@ -120,7 +119,7 @@ function App() {
           (stat) => stat.name === "The Last Laugh"
         );
         const lastLaughPass = lastLaughTotal.filter(
-          (stat) => stat.pass === "true"
+          (stat) => stat.pass === "Yes"
         );
         const roomFourPassrate =
           (lastLaughPass.length / lastLaughTotal.length) * 100;
@@ -132,7 +131,7 @@ function App() {
           (stat) => stat.name === "The Short Cut"
         );
         const shortCutPass = shortCutTotal.filter(
-          (stat) => stat.pass === "true"
+          (stat) => stat.pass === "Yes"
         );
         const roomFivePassrate =
           (shortCutPass.length / shortCutTotal.length) * 100;
@@ -151,7 +150,7 @@ function App() {
   useEffect(()=>{
     getRoomStats();
   },[]);
-  
+
   return (
     <div className="App">
       <DarkModeProvider>
