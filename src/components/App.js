@@ -1,7 +1,7 @@
 import "../App.scss";
 import Homepage from "./Homepage";
 import SignIn from "../pages/SignIn";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Error from "./Error";
@@ -23,6 +23,10 @@ function App() {
 
   const database = getDatabase(firebase);
   const dbRef = ref(database);
+
+  useEffect(()=>{
+    getRoomStats();
+  }, [])
 
   const updateStats = () => {
     onValue(dbRef, () => {
@@ -146,7 +150,6 @@ function App() {
     });
   };
 
-  // -- Will run getRoomStats on page load
 
 
   return (
