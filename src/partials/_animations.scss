@@ -136,3 +136,39 @@
         transform:scale(1)
     }
 }
+
+@keyframes shakeIcon{
+    0%{
+        transform:rotate(25deg);
+    }
+10%{
+    transform:rotate(0deg);
+}
+20%{
+    transform:rotate(-25deg);
+}
+30%{
+    transform:rotate(0);
+}
+40%{
+    transform:rotate(25deg);
+}
+50%{
+    transform:rotate(0);
+}
+60%{
+    transform:rotate(-25deg);
+}
+70%{
+    transform:rotate(0);
+}
+80%{
+    transform:rotate(0);
+}
+90%{
+    transform:rotate(0);
+}
+100%{
+    transform:rotate(0);
+}
+}

@@ -12,6 +12,7 @@ header{
         flex-direction:column;
         justify-content:space-evenly;
         height:100%;
+
     }
 
     img{
@@ -67,5 +68,39 @@ header.darkTheme{
     a{
         color:$white;
     }
+}
+
+.hide{
+    .wrapper{
+        position: relative;
+
+        .showHeader{
+            position: absolute;
+            right:-45%;
+            background-color:red;
+            font-size:50px;
+        }
+    }
+
+    transform:translateX(-90%);
+    transition:transform 0.3s;
+    // opacity:0.5;
+}
+
+.show{
+    .wrapper{
+        position: relative;
+        .hideHeader{
+            position: absolute;
+            right:-45%;
+            background-color:red;
+            font-size:50px;
+        }
+    }
+    // opacity:1;
+    transform:translateX(0px);
+    transition:transform 0.3s;
+
+
 }
 

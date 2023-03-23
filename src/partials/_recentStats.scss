@@ -12,7 +12,11 @@
     h2{
         margin:0;
     }
-
+    .action-container{
+        display:flex;
+        justify-content:space-between;
+        align-items: center;
+    }
     .filter-posts{
         display:flex;
         margin:20px 0;
@@ -51,6 +55,7 @@
 
 }
 
+
 table{
     width:100%;
 
@@ -70,6 +75,11 @@ table{
     td{
         width:calc((100% / 6) - 10px);
         text-align: center;
+
+        &:last-child{
+            display:flex;
+            justify-content:space-evenly;
+        }
     }
 
     th{
@@ -92,6 +102,20 @@ table{
         tr:nth-child(even){        
             background-color:rgba($black, $alpha:0.2);
             transform:skew(-8deg);
+        }
+    }
+    .reactButton{
+        display:flex;
+        border:none;
+        background-color:transparent;
+
+        &:hover{
+            color:$red !important;
+            transition:color 0.3s;
+            cursor:pointer;
+        }
+        &:hover:nth-child(2){
+            animation:shakeIcon infinite 1s;
         }
     }
 }
@@ -154,3 +178,8 @@ table{
     }
 
 }
+
+/* pop up modal */
+// .modal-container .popupModalMessage {
+    
+// }
