@@ -77,8 +77,17 @@ header.darkTheme{
         .showHeader{
             position: absolute;
             right:-45%;
-            background-color:red;
-            font-size:50px;
+            background-color:black;
+            font-size:35px;
+            color:white;
+            border-radius:50%;
+            padding:5px;
+            transition:background-color 0.3s;
+
+            &:hover, &:focus{
+                background-color:$red;
+            }
+
         }
     }
 
@@ -93,8 +102,17 @@ header.darkTheme{
         .hideHeader{
             position: absolute;
             right:-45%;
-            background-color:red;
-            font-size:50px;
+            background-color:black;
+            font-size:35px;
+            color:white;
+            border-radius:50%;
+            padding:5px;
+            transition:background-color 0.3s;
+
+            &:hover, &:focus{
+                background-color:$red;
+            }
+
         }
     }
     // opacity:1;
@@ -102,5 +120,18 @@ header.darkTheme{
     transition:transform 0.3s;
 
 
+}
+
+
+.main-content.extendMain{
+    width:99%;
+    .scoreboard-section{
+        .first-slide{
+            width:100vw;
+        }
+        .carousel-slides{
+            width:100vw;
+        }
+    }
 }
 

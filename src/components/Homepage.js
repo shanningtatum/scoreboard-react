@@ -95,7 +95,14 @@ const Homepage = () => {
               </div>
             </div>
           </header>
-          <main id="mainContent" className="main-content darkTheme">
+          <main
+            id="mainContent"
+            className={
+              toggleNavBar
+                ? "main-content darkTheme extendMain"
+                : "main-content darkTheme"
+            }
+          >
             <Outlet />
           </main>
         </>
@@ -162,7 +169,12 @@ const Homepage = () => {
               </div>
             </div>
           </header>
-          <main id="mainContent" className="main-content">
+          <main
+            id="mainContent"
+            className={
+              toggleNavBar ? "main-content extendMain" : "main-content"
+            }
+          >
             <Outlet />
           </main>
         </>

@@ -243,6 +243,10 @@ section {
   height: 100%;
 }
 
+.main-content {
+  transition: width 0.3s;
+}
+
 .main-content.darkTheme {
   background-color: rgba(0, 0, 0, 0.7);
   color: #fff;
@@ -798,6 +802,58 @@ header.darkTheme a {
   color: #fff;
 }
 
+.hide {
+  transform: translateX(-90%);
+  transition: transform 0.3s;
+}
+.hide .wrapper {
+  position: relative;
+}
+.hide .wrapper .showHeader {
+  position: absolute;
+  right: -45%;
+  background-color: black;
+  font-size: 35px;
+  color: white;
+  border-radius: 50%;
+  padding: 5px;
+  transition: background-color 0.3s;
+}
+.hide .wrapper .showHeader:hover, .hide .wrapper .showHeader:focus {
+  background-color: #d42025;
+}
+
+.show {
+  transform: translateX(0px);
+  transition: transform 0.3s;
+}
+.show .wrapper {
+  position: relative;
+}
+.show .wrapper .hideHeader {
+  position: absolute;
+  right: -45%;
+  background-color: black;
+  font-size: 35px;
+  color: white;
+  border-radius: 50%;
+  padding: 5px;
+  transition: background-color 0.3s;
+}
+.show .wrapper .hideHeader:hover, .show .wrapper .hideHeader:focus {
+  background-color: #d42025;
+}
+
+.main-content.extendMain {
+  width: 99%;
+}
+.main-content.extendMain .scoreboard-section .first-slide {
+  width: 100vw;
+}
+.main-content.extendMain .scoreboard-section .carousel-slides {
+  width: 100vw;
+}
+
 .add-stats {
   font-family: "Source Sans Pro", sans-serif;
   position: relative;
@@ -950,7 +1006,7 @@ header.darkTheme a {
   border: 2px #000 solid;
   background-color: #fff;
   color: #000;
-  width: 50%;
+  width: 45%;
   margin: 0 auto;
 }
 .error-modal button:hover, .error-modal button:focus {
@@ -1129,6 +1185,11 @@ table .reactButton:hover:nth-child(2) {
   transform: translateY(3px) translateX(3px);
 }
 
+/* pop up modal */
+.popupModalMessage {
+  display: flex;
+}
+
 .scoreboard-section {
   color: #fff;
   height: 100vh;
@@ -1159,6 +1220,7 @@ table .reactButton:hover:nth-child(2) {
   -webkit-animation: slideAnimate 100s infinite;
           animation: slideAnimate 100s infinite;
   height: inherit;
+  transition: width 0.3s;
 }
 .scoreboard-section .scoreboard-container {
   display: flex;
@@ -1241,6 +1303,7 @@ table .reactButton:hover:nth-child(2) {
   width: 84vw;
   height: 100%;
   background-color: #000;
+  transition: width 0.3s;
 }
 .scoreboard-section .first-slide img {
   top: 0;
