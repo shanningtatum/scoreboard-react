@@ -5,8 +5,8 @@ import { DarkModeContext } from "../contexts/DarkModeContext";
 // import Dashboard from "./Dashboard";
 
 // Icons
-import { BiArrowBack } from "react-icons/bi";
-import { BiArrowToRight } from "react-icons/bi";
+import { BiArrowFromLeft } from "react-icons/bi";
+import { BiArrowToLeft } from "react-icons/bi";
 
 const Homepage = () => {
   const { user, logoutUser } = UserAuth();
@@ -69,12 +69,12 @@ const Homepage = () => {
                 </ul>
               </nav>
               {toggleNavBar ? (
-                <BiArrowToRight
+                <BiArrowFromLeft
                   className="showHeader"
                   onClick={() => toggleFunction()}
                 />
               ) : (
-                <BiArrowBack
+                <BiArrowToLeft
                   onClick={() => toggleFunction()}
                   className="hideHeader"
                 />
@@ -143,12 +143,12 @@ const Homepage = () => {
               </nav>
               {/* hide header */}
               {toggleNavBar ? (
-                <BiArrowToRight
+                <BiArrowFromLeft
                   className="showHeader"
                   onClick={() => toggleFunction()}
                 />
               ) : (
-                <BiArrowBack
+                <BiArrowToLeft
                   onClick={() => toggleFunction()}
                   className="hideHeader"
                 />
